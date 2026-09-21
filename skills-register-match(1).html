@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills Register Match — CV Competency Assessor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EFF1EA;
+  --paper-raised:#F7F8F3;
+  --ink:#16211D;
+  --ink-soft:#42504A;
+  --muted:#6C7A72;
+  --line:rgba(22,33,29,0.14);
+  --line-strong:rgba(22,33,29,0.28);
+  --accent:#2B4C6F;
+  --accent-ink:#F7F8F3;
+  --accent-soft:#DDE6ED;
+  --amber:#A15C0E;
+  --amber-soft:#F1E1C9;
+  --rust:#8F3B2E;
+  --rust-soft:#F0DAD3;
+  --green:#3B6B44;
+  --green-soft:#DCE8DB;
+  --focus:#2B4C6F;
+  --font-display:'Fraunces', 'Iowan Old Style', 'Palatino Linotype', serif;
+  --font-body:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#151A17;
+    --paper-raised:#1C2320;
+    --ink:#EAEDE8;
+    --ink-soft:#C3CBC4;
+    --muted:#8B978F;
+    --line:rgba(234,237,232,0.14);
+    --line-strong:rgba(234,237,232,0.26);
+    --accent:#7FA6C9;
+    --accent-ink:#0F1B24;
+    --accent-soft:#243642;
+    --amber:#D79A4E;
+    --amber-soft:#3A2E1C;
+    --rust:#D98F80;
+    --rust-soft:#3B2521;
+    --green:#8FBF95;
+    --green-soft:#20301F;
+    --focus:#7FA6C9;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#151A17;
+  --paper-raised:#1C2320;
+  --ink:#EAEDE8;
+  --ink-soft:#C3CBC4;
+  --muted:#8B978F;
+  --line:rgba(234,237,232,0.14);
+  --line-strong:rgba(234,237,232,0.26);
+  --accent:#7FA6C9;
+  --accent-ink:#0F1B24;
+  --accent-soft:#243642;
+  --amber:#D79A4E;
+  --amber-soft:#3A2E1C;
+  --rust:#D98F80;
+  --rust-soft:#3B2521;
+  --green:#8FBF95;
+  --green-soft:#20301F;
+  --focus:#7FA6C9;
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent-soft); color:var(--ink);}
+a{color:var(--accent);}
+:focus-visible{outline:2px solid var(--focus); outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+
+.wrap{max-width:920px; margin:0 auto; padding:0 24px 96px;}
+
+/* ---------- header ---------- */
+.site-head{
+  display:flex; align-items:baseline; justify-content:space-between;
+  padding:28px 0 18px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:44px;
+  gap:16px; flex-wrap:wrap;
+}
+.brand{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:19px;
+  letter-spacing:0.01em;
+}
+.brand .mark{color:var(--accent);}
+.site-head .tag{
+  font-size:13px; color:var(--muted); max-width:360px; text-align:right;
+}
+@media (max-width:560px){ .site-head .tag{text-align:left;} }
+
+/* ---------- hero ---------- */
+.hero{margin-bottom:56px;}
+.hero h1{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(30px, 4.4vw, 44px);
+  line-height:1.12;
+  margin:0 0 16px;
+  max-width:15ch;
+  letter-spacing:-0.01em;
+}
+.hero p.lede{
+  font-size:17px;
+  color:var(--ink-soft);
+  max-width:56ch;
+  margin:0 0 30px;
+}
+.ruler{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  border:1px solid var(--line-strong);
+  border-radius:2px;
+  overflow:hidden;
+  max-width:640px;
+}
+.ruler .tick{
+  padding:12px 10px 11px;
+  border-right:1px solid var(--line);
+  background:var(--paper-raised);
+}
+.ruler .tick:last-child{border-right:none;}
+.ruler .tick .n{
+  font-family:var(--font-display);
+  font-size:20px;
+  line-height:1;
+  margin-bottom:5px;
+  color:var(--accent);
+}
+.ruler .tick .lab{
+  font-size:11.5px;
+  color:var(--muted);
+  line-height:1.3;
+}
+
+/* ---------- generic section ---------- */
+.step{
+  margin-bottom:16px;
+  padding-top:36px;
+  border-top:1px solid var(--line);
+}
+.step:first-of-type{border-top:none; padding-top:0;}
+.step[hidden]{display:none;}
+.step-head{
+  display:flex; align-items:baseline; gap:12px; margin-bottom:18px;
+}
+.step-num{
+  font-family:var(--font-display);
+  font-size:14px;
+  color:var(--muted);
+  min-width:20px;
+}
+.step-title{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:22px;
+  margin:0;
+}
+.step-sub{
+  font-size:14px; color:var(--muted); margin:2px 0 0 32px;
+}
+
+/* ---------- framework picker (bordered rows, not cards) ---------- */
+.fw-list{border-top:1px solid var(--line);}
+.fw-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:14px;
+  padding:18px 4px;
+  border-bottom:1px solid var(--line);
+  cursor:pointer;
+  background:none;
+  border-left:0; border-right:0; border-top:0;
+  width:100%;
+  text-align:left;
+  font-family:inherit;
+  color:inherit;
+  transition:background 0.12s ease;
+}
+.fw-row:hover{background:var(--paper-raised);}
+.fw-row.selected{background:var(--accent-soft);}
+.fw-row .fw-name{
+  font-weight:600; font-size:16px;
+}
+.fw-row .fw-desc{
+  font-size:13.5px; color:var(--muted); margin-top:3px; font-weight:400;
+}
+.fw-row .fw-meta{
+  font-size:12.5px; color:var(--muted); white-space:nowrap;
+}
+.fw-row.selected .fw-meta{color:var(--accent);}
+.fw-row .chk{
+  width:18px; height:18px; border:1.5px solid var(--line-strong); border-radius:50%;
+  display:inline-block; position:relative; flex:none;
+}
+.fw-row.selected .chk{border-color:var(--accent);}
+.fw-row.selected .chk::after{
+  content:""; position:absolute; inset:3px; border-radius:50%; background:var(--accent);
+}
+.fw-row-inner{display:flex; align-items:center; gap:14px;}
+
+/* ---------- form controls ---------- */
+label.field-label{
+  display:block; font-size:13px; font-weight:600; color:var(--ink-soft);
+  margin-bottom:7px;
+}
+select, textarea, input[type="text"]{
+  font-family:var(--font-body);
+  font-size:15px;
+  color:var(--ink);
+  background:var(--paper-raised);
+  border:1px solid var(--line-strong);
+  border-radius:3px;
+  padding:11px 12px;
+  width:100%;
+}
+select{appearance:none; -webkit-appearance:none; background-image:linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 20px) center, calc(100% - 15px) center; background-size:5px 5px, 5px 5px; background-repeat:no-repeat; padding-right:36px;}
+textarea{resize:vertical; min-height:220px; line-height:1.5; font-size:14.5px;}
+.field{margin-bottom:20px;}
+.field-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+@media (max-width:600px){.field-row{grid-template-columns:1fr;}}
+.hint{font-size:12.5px; color:var(--muted); margin-top:6px;}
+.upload-row{
+  display:flex; align-items:center; gap:12px; margin-top:10px; flex-wrap:wrap;
+}
+.file-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:600; color:var(--ink);
+  background:var(--paper-raised); border:1px solid var(--line-strong);
+  border-radius:3px; padding:9px 14px; cursor:pointer;
+}
+.file-btn:hover{background:var(--accent-soft);}
+.file-btn input{display:none;}
+.file-status{font-size:12.5px; color:var(--muted);}
+
+/* ---------- mode toggle ---------- */
+.mode-toggle{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+.mode-opt{
+  flex:1; min-width:220px; border:1px solid var(--line-strong); border-radius:3px;
+  padding:13px 14px; cursor:pointer; background:var(--paper-raised);
+}
+.mode-opt:hover{background:var(--accent-soft);}
+.mode-opt.selected{border-color:var(--accent); background:var(--accent-soft);}
+.mode-opt.disabled{opacity:0.45; cursor:not-allowed; background:var(--paper-raised);}
+.mode-opt .mo-row{display:flex; align-items:center; gap:9px;}
+.mode-opt .chk{
+  width:16px; height:16px; border:1.5px solid var(--line-strong); border-radius:50%;
+  display:inline-block; position:relative; flex:none;
+}
+.mode-opt.selected .chk{border-color:var(--accent);}
+.mode-opt.selected .chk::after{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--accent);}
+.mode-opt .mo-title{font-weight:700; font-size:13.5px;}
+.mode-opt .mo-desc{font-size:12px; color:var(--muted); margin-top:4px; margin-left:25px;}
+
+/* ---------- results mode tag ---------- */
+.mode-tag{
+  display:inline-block; font-size:11px; font-weight:700; padding:3px 9px;
+  border-radius:20px; margin-left:2px; vertical-align:middle;
+}
+.mode-tag.ai{background:var(--accent-soft); color:var(--accent);}
+.mode-tag.offline{background:var(--amber-soft); color:var(--amber);}
+.inline-link-btn{
+  background:none; border:none; padding:0; margin-left:4px; color:var(--accent);
+  font-weight:700; text-decoration:underline; cursor:pointer; font-size:inherit; font-family:inherit;
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  font-family:var(--font-body);
+  font-weight:600; font-size:14.5px;
+  border-radius:3px; border:1px solid var(--ink);
+  padding:13px 22px; cursor:pointer;
+  background:var(--ink); color:var(--paper);
+  transition:opacity 0.12s ease, transform 0.05s ease;
+}
+.btn:hover{opacity:0.88;}
+.btn:active{transform:translateY(1px);}
+.btn:disabled{opacity:0.4; cursor:not-allowed;}
+.btn.secondary{
+  background:transparent; color:var(--ink); border-color:var(--line-strong);
+}
+.btn.secondary:hover{background:var(--paper-raised);}
+
+/* ---------- run bar / status ---------- */
+.run-bar{display:flex; align-items:center; gap:16px; margin-top:26px; flex-wrap:wrap;}
+.status-line{font-size:13.5px; color:var(--muted); display:flex; align-items:center; gap:8px;}
+.spinner{
+  width:14px; height:14px; border-radius:50%;
+  border:2px solid var(--line-strong); border-top-color:var(--accent);
+  animation:spin 0.8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.error-box{
+  background:var(--rust-soft); border:1px solid var(--rust);
+  color:var(--ink); border-radius:3px; padding:14px 16px; font-size:13.5px;
+  margin-top:18px;
+}
+.error-box strong{color:var(--rust); display:block; margin-bottom:4px; font-size:13px;}
+
+/* ---------- results ---------- */
+.results{padding-top:44px; margin-top:12px; border-top:1px solid var(--line-strong);}
+.results-head{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; margin-bottom:28px;}
+.results-head h2{font-family:var(--font-display); font-weight:500; font-size:24px; margin:0 0 6px;}
+.results-head .sub{font-size:13.5px; color:var(--muted);}
+.summary-strip{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); margin-bottom:26px;
+}
+.summary-cell{background:var(--paper-raised); padding:18px 20px;}
+.summary-cell .num{font-family:var(--font-display); font-size:32px; line-height:1; color:var(--accent);}
+.summary-cell .lab{font-size:12.5px; color:var(--muted); margin-top:8px;}
+@media (max-width:640px){.summary-strip{grid-template-columns:1fr;}}
+
+.narrative{font-size:15px; color:var(--ink-soft); max-width:70ch; margin:0 0 30px;}
+
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:38px;}
+@media (max-width:640px){.two-col{grid-template-columns:1fr;}}
+.col h3{font-size:13px; text-transform:none; letter-spacing:0.01em; color:var(--ink); margin:0 0 12px; font-weight:700;}
+.col ul{margin:0; padding:0; list-style:none;}
+.col li{
+  font-size:13.5px; color:var(--ink-soft); padding:10px 0 10px 16px;
+  border-top:1px solid var(--line); position:relative;
+}
+.col li:first-child{border-top:none;}
+.col li::before{content:"—"; position:absolute; left:0; color:var(--muted);}
+.col.strengths li::before{content:"+"; color:var(--green); font-weight:700;}
+.col.priorities li::before{content:"!"; color:var(--amber); font-weight:700;}
+
+.cat-block{margin-bottom:8px;}
+.cat-title{
+  font-size:12px; font-weight:700; letter-spacing:0.02em; color:var(--muted);
+  padding:20px 0 8px; border-bottom:1px solid var(--line-strong);
+}
+.table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table.skills{width:100%; border-collapse:collapse; font-size:13.5px; min-width:640px;}
+table.skills th{
+  text-align:left; font-size:11.5px; font-weight:700; color:var(--muted);
+  padding:10px 10px; border-bottom:1px solid var(--line-strong); white-space:nowrap;
+}
+table.skills td{
+  padding:13px 10px; border-bottom:1px solid var(--line); vertical-align:top;
+}
+table.skills tr:last-child td{border-bottom:none;}
+.skill-name{font-weight:600; color:var(--ink);}
+.skill-evidence{color:var(--muted); font-size:12.5px; margin-top:4px; max-width:38ch;}
+.bar-cell{min-width:150px;}
+.bar-track{
+  position:relative; height:8px; background:var(--paper-raised); border:1px solid var(--line);
+  border-radius:2px; margin-bottom:5px;
+}
+.bar-fill{position:absolute; top:-1px; bottom:-1px; left:-1px; border-radius:2px 0 0 2px;}
+.bar-target{
+  position:absolute; top:-4px; bottom:-4px; width:2px; background:var(--ink);
+}
+.bar-nums{font-size:11px; color:var(--muted); display:flex; justify-content:space-between;}
+.gap-tag{
+  display:inline-block; font-size:11px; font-weight:700; padding:3px 8px; border-radius:2px;
+  white-space:nowrap;
+}
+.gap-met{background:var(--green-soft); color:var(--green);}
+.gap-amber{background:var(--amber-soft); color:var(--amber);}
+.gap-rust{background:var(--rust-soft); color:var(--rust);}
+
+.results-actions{display:flex; gap:12px; margin-top:34px; flex-wrap:wrap;}
+
+/* ---------- development plan cards ---------- */
+.plan-card{
+  border:1px solid var(--line); border-radius:3px; padding:16px 18px 18px;
+  margin-bottom:14px; background:var(--paper-raised);
+}
+.plan-head{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px;}
+.plan-head .skill-name{font-size:14.5px;}
+.plan-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px 28px; margin:0;}
+.plan-grid > div{border-top:1px solid var(--line); padding-top:9px;}
+.plan-grid dt{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; color:var(--muted); margin-bottom:4px;}
+.plan-grid dd{margin:0; font-size:13px; color:var(--ink-soft); line-height:1.45;}
+@media (max-width:600px){.plan-grid{grid-template-columns:1fr;}}
+
+/* ---------- career ladder placement ---------- */
+.ladder-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin:14px 0 10px;}
+.ladder-card{background:var(--paper-raised); padding:18px 20px;}
+.ladder-card.highlight{background:var(--accent-soft);}
+.ladder-lab{font-size:11.5px; color:var(--muted); margin-bottom:8px;}
+.ladder-title{font-family:var(--font-display); font-size:19px; line-height:1.25; margin-bottom:5px;}
+.ladder-sub{font-size:12.5px; color:var(--muted);}
+@media (max-width:600px){.ladder-grid{grid-template-columns:1fr;}}
+
+.foot{
+  margin-top:70px; padding-top:20px; border-top:1px solid var(--line);
+  font-size:12px; color:var(--muted);
+}
+.visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap;}
+
+/* ---------- premium assessment CTA ---------- */
+.premium-cta {
+  margin: 28px 0 20px;
+  padding: 20px 22px;
+  border: 1px solid var(--line, #d9ddd4);
+  border-radius: 12px;
+  background: var(--soft, #f5f6f2);
+}
+.premium-cta strong { display:block; margin-bottom:6px; font-size:15px; }
+.premium-cta p { margin:0; color:var(--muted, #626860); line-height:1.6; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site-head">
+    <div class="brand"><span class="mark">◆</span> Skills Register Match</div>
+    <div class="tag">Reads a CV against the FE Skills Register and the PIVOT Portfolio &amp; Performance Management competency matrix.</div>
+  </header>
+
+  <section class="hero">
+    <h1>Check a CV against the competency register — not a gut feeling.</h1>
+    <p class="lede">Pick the role, paste the CV, and this reads the evidence against each critical skill's target level — the same 0–4 scale used across the FE Skills Register and the PIVOT competency booklet.</p>
+    <div class="ruler">
+      <div class="tick"><div class="n">0</div><div class="lab">No competency</div></div>
+      <div class="tick"><div class="n">1</div><div class="lab">Awareness</div></div>
+      <div class="tick"><div class="n">2</div><div class="lab">Fundamental application</div></div>
+      <div class="tick"><div class="n">3</div><div class="lab">Skilled application</div></div>
+      <div class="tick"><div class="n">4</div><div class="lab">Mastery</div></div>
+    </div>
+  </section>
+
+  <main id="app">
+
+    <section class="step" id="step1">
+      <div class="step-head">
+        <span class="step-num">01</span>
+        <h2 class="step-title">Choose the register</h2>
+      </div>
+      <div class="fw-list" id="fwList" role="radiogroup" aria-label="Competency framework"></div>
+    </section>
+
+    <section class="step" id="step2" hidden>
+      <div class="step-head">
+        <span class="step-num">02</span>
+        <h2 class="step-title">Choose the role</h2>
+      </div>
+      <div id="step2Body"></div>
+    </section>
+
+    <section class="step" id="step3" hidden>
+      <div class="step-head">
+        <span class="step-num">03</span>
+        <h2 class="step-title">Bring in the CV</h2>
+      </div>
+      <p class="step-sub" id="step3Sub" style="margin-bottom:18px;"></p>
+      <div class="field">
+        <label class="field-label" for="cvText">CV text</label>
+        <textarea id="cvText" placeholder="Paste the CV's full text here — experience, projects, certifications, tools, publications. The more concrete detail, the better the read."></textarea>
+        <div class="upload-row">
+          <label class="file-btn">
+            ⇪ Upload .txt or .docx
+            <input type="file" id="fileInput" accept=".txt,.docx">
+          </label>
+          <span class="file-status" id="fileStatus"></span>
+        </div>
+        <div class="hint" id="cvHint"></div>
+      </div>
+      <div class="run-bar">
+        <button class="btn" id="runBtn" disabled>Run assessment</button>
+        <div class="status-line" id="statusLine" hidden><span class="spinner"></span><span id="statusText">Thinking…</span></div>
+      </div>
+      <div id="errorBox"></div>
+    </section>
+
+    <section class="results" id="results" hidden></section>
+
+  </main>
+
+  <footer class="foot">
+    Built from the FE Skills Register (Project, GNFEO, Discipline Engineering) and the PIVOT Portfolio &amp; Performance Management competency booklet. This public tool uses an offline keyword scan and is a reading aid, not a certification — check anything decision-critical against the source register. For a more detailed AI-powered Claude assessment, please contact me for the paid assessment service.
+  </footer>
+
+</div>
+
+<script>
+"use strict";
+
+/* ============================= DATA ============================= */
+const FE_DATA = {"levels": [{"level": 0, "label": "No Competency", "desc": "No competency in this area."}, {"level": 1, "label": "Awareness", "desc": "Under supervision. Understands and can describe basic concepts; can carry out routine procedures with guidance, mentoring and supervision."}, {"level": 2, "label": "Fundamental Application", "desc": "Performed a few times under normal conditions. Applies the right skills to do the work in normal situations, with some oversight; can handle simple/routine activities unsupervised."}, {"level": 3, "label": "Skilled Application", "desc": "Performed numerous times under abnormal conditions. Can analyze and explain the task/procedure in depth, including its relationship to other processes/systems; diagnoses and routinely provides solutions aligned with business goals; works independently."}, {"level": 4, "label": "Mastery", "desc": "Subject Matter Expert who shapes processes, tools and regulations. Has detailed, current knowledge of industry standards, trends and best practice; implements/evaluates new technology, process or procedure; diagnoses and solves complex problems; can coordinate and supervise others."}], "catalog": [{"id": "s1", "category": "General Facilities Engineering", "name": "Cross Functional Interaction", "desc": "Interface With Other FE Disciplines and Functions"}, {"id": "s2", "category": "General Facilities Engineering", "name": "Base Business Support", "desc": "Support base business processes, Operational Excellence Management System (OEMS) processes on Process Safety (PS), Personal Safety and Health, Environment, Reliability and Efficiency to achieve World-Class Performance"}, {"id": "s3", "category": "General Facilities Engineering", "name": "Technical Codes and Standards", "desc": "Apply applicable company guidelines and standards, consensus codes and standards, applicable to the design, construction, operations and maintenance of facilities.\nMaintain accurate, complete, and current standards, particularly key PS-related standards. \nEnsure standards are accessible and used appropriately."}, {"id": "s4", "category": "General Facilities Engineering", "name": "Process Safety Information (PSI)", "desc": "Interpret Process Safety Information (PSI) in a way that helps the organization make better decisions, and increases the likelihood that individuals faced with abnormal situations will take the proper action.\nApply lessons learned for continual improvement of knowledge and competencies. \nExplain how Process Safety Competency impacts all other Process Safety elements."}, {"id": "s5", "category": "General Facilities Engineering", "name": "Risk Management", "desc": "Apply Chevron's Risk Management (RM) Process, sub procedures and tools.\nIdentify hazards inherent in the process or facility. \nApply RM2 to assets.\nComplete risk analysis reports."}, {"id": "s6", "category": "General Facilities Engineering", "name": "Operating Procedures", "desc": "Follow relevant operating procedures.  \nAnalyze a procedure and identify whether there are missing steps or components.  Ensure operating procedures are current, visible to the workforce, and enforced.\nVerify that operational readiness tasks are incorporated into start up procedures."}, {"id": "s7", "category": "General Facilities Engineering", "name": "Safe Work Practices (SWP)", "desc": "Apply applicable hazards and safe work practices\nIdentify when safe work practices are applicable. \nPromote, educate and enforce safe work practices. \nPerform work in accordance with safe work practice controls, and audit for compliance."}, {"id": "s8", "category": "General Facilities Engineering", "name": "Asset Integrity and Reliability (AI&R)", "desc": "Verify that equipment is fabricated and installed in accordance with design specifications and is fit for service at start-up.\nIdentify the procedural requirements for maintenance, repairs and adjustments to process related equipment.\nMonitor and evaluate the system for reporting and responding to deficient conditions and deferred scheduled routine maintenance activities, and help people understand the risks associated with such.\nInfluence Asset Integrity (AI) practitioners and participate in criticality assessments (i.e. SERIP/URIP)."}, {"id": "s9", "category": "General Facilities Engineering", "name": "Asset Commissioning and Decommissioning (Asset Retirement)", "desc": "Apply appropriate processes to commission or decommission and asset."}, {"id": "s10", "category": "General Facilities Engineering", "name": "Contractor Management", "desc": "Execute the Contractor Health Environment and Safety Management (CHESM) process.\nConduct contractor engagement meetings to set expectations and monitor progress. \nAdvise contract owners on ensuring that facility process hazards and risks are clearly communicated to contractors. \nParticipate in and document Work-in-Progress audits of contractor activities. \nIdentify process risk caused by simultaneous operations and help identify and implement mitigation measures to offset those unforeseen risks.\nAudit the effectiveness of programs managing Contractor Management to evaluate whether the management system is effective in meeting its objectives."}, {"id": "s11", "category": "General Facilities Engineering", "name": "Management of Change", "desc": "Perform the Management of Change (MOC) process,  including pre-start up safety reviews (PSSR) requirements. \nEngage competent personnel as appropriate and hold people accountable for assessing changes with the appropriate level of technical rigor.\nCoach and train MOC users and approvers in the effective execution of MOC assignments, performing quality assurance (QA) of MOCs from others in the organization and providing appropriate feedback. \nParticipate in MOC auditing to evaluate whether people are applying the process appropriately, being proactive, and identifying potential future issues. \nEngage with technical experts on MOC activities (Tenet of Operation #10)."}, {"id": "s12", "category": "General Facilities Engineering", "name": "Project Management", "desc": "Manage locally executed projects.\nLead the cost engineering aspects of project execution. \nScope contracts and supervise contractors providing above services.\nCoordinate and execute projects following Capital Stewardship Organizational Capability (CSOC), Chevron Project Management System (CPMS), Operations Assurance (OA) and relevant Chevron project standards and practices.\nAct as project manager or project engineer on offshore projects involving commercial diving at various levels of complexity."}, {"id": "s13", "category": "Fixed Equipment Engineering", "name": "Heat Transfer Equipment", "desc": "Design, specify, select, install and provide operational support for all types of heat transfer equipment . \nDesign, specify, select and install steam generations systems.   \nSupport the operation of these systems."}, {"id": "s14", "category": "Fixed Equipment Engineering", "name": "Steam Distribution", "desc": "Design, specify, select, install and commission steam distribution systems.\nSupport the operation of these systems."}, {"id": "s15", "category": "Fixed Equipment Engineering", "name": "Heat management (surface facilities)", "desc": "Evaluate and optimize the use of the heat generated during steam flood operations.  \nPerform heat and material balance.\nIdentify sources and uses for all heat generated."}, {"id": "s16", "category": "Fixed Equipment Engineering", "name": "Piping and Valves", "desc": "Design, specify, select, install and provide operational support for valve and piping systems."}, {"id": "s17", "category": "Fixed Equipment Engineering", "name": "Pressure Vessels", "desc": "Design, specify, select, fabricate and install new vessels and re-rate and alter existing pressure vessel equipment. \nProvide operational support for pressure vessels."}, {"id": "s18", "category": "Fixed Equipment Engineering", "name": "Flare and Relief", "desc": "Design, specify, select, install and provide operational support for flare and relief equipment."}, {"id": "s19", "category": "Fixed Equipment Engineering", "name": "Tanks", "desc": "Design, specify, select, install and provide operational support for tank equipment."}, {"id": "s20", "category": "Fixed Equipment Engineering", "name": "Pipelines", "desc": "Design, specify, select, install and re-rate pipeline equipment. \nProvide operational for pipelines"}, {"id": "s21", "category": "Fixed Equipment Engineering", "name": "Materials and Corrosion", "desc": "Specify materials and provide requirements for fabrication or repair recommendations. \nPerform materials and corrosion operations and maintenance support."}, {"id": "s22", "category": "Rotating Equipment Engineering", "name": "Pumps", "desc": "Design, select, review, install and document pumping systems."}, {"id": "s23", "category": "Rotating Equipment Engineering", "name": "Compressors", "desc": "Design, select, review, install and document compressor systems."}, {"id": "s24", "category": "Rotating Equipment Engineering", "name": "Drivers", "desc": "Design, select, review, install and document driver systems."}, {"id": "s25", "category": "Rotating Equipment Engineering", "name": "General Machinery Support Systems", "desc": "Design, select, review, install and document general machinery systems to support rotating equipment"}, {"id": "s26", "category": "Rotating Equipment Engineering", "name": "Associated Equipment Interface", "desc": "Review and approve associated equipment interface by working with Process, Instrumentation and Controls, Electrical and Structural Engineering."}, {"id": "s27", "category": "Rotating Equipment Engineering", "name": "Subsea Adaptations (Marinization)", "desc": "To meet the unique requirements, adapt topside and/or design rotating equipment for subsea applications."}, {"id": "s28", "category": "Civil Engineering", "name": "Site requirements (on-land)", "desc": "Define on-land site development requirements to meet process requirements and company, industry and local codes and specifications."}, {"id": "s29", "category": "Civil Engineering", "name": "Site Selection", "desc": "Conduct logistics study, soil investigation, and site hazard study to determine the best location for facility and components. \nDevelop Basis of Design for selected site."}, {"id": "s30", "category": "Civil Engineering", "name": "Data requirements (on-land)", "desc": "Define the data requirements for the site."}, {"id": "s31", "category": "Civil Engineering", "name": "Infrastructure Design", "desc": "Design infrastructure, such as roads and bridges to meet site development and process requirements."}, {"id": "s32", "category": "Civil Engineering", "name": "Site Development Requirements (near-shore)", "desc": "Define near shore site development requirements and consider environmental impact, applicable Codes and Standards."}, {"id": "s33", "category": "Civil Engineering", "name": "Site preparation (near-shore)", "desc": "Design and provide site preparation support including grading, dredging and erosion control."}, {"id": "s34", "category": "Civil Engineering", "name": "Transportation", "desc": "Conduct logistics studies, assess existing roads and bridges and design new temporary or permanent roads and bridges.  Specify design considerations for loading during transport."}, {"id": "s35", "category": "Civil Engineering", "name": "Heavy Lift", "desc": "Plan and organize lift; Develop rigging diagram/plan, and rigging analysis and design; Conduct Job Safety Analysis (JSA)."}, {"id": "s36", "category": "Onshore Structural Engineering", "name": "Structural Requirements (Onshore and Nearshore)", "desc": "Define structural requirements, including environmental, live and dead loads for land-based and near-shore structure."}, {"id": "s37", "category": "Onshore Structural Engineering", "name": "Structural Design and Evaluation (Onshore and Nearshore)", "desc": "Design and evaluate land-based structures, including foundations, bridges, buildings, industrial facility structures and tanks."}, {"id": "s38", "category": "Onshore Structural Engineering", "name": "Structural Fitness for Service (Onshore and Nearshore)", "desc": "Provide structural damage assessments, repair design, and life extension studies, structural modification or upgrades. \nProvide engineering support for on-shore and near-shore structures."}, {"id": "s39", "category": "Onshore Structural Engineering", "name": "Engineering support (On-shore and Near shore)", "desc": "Provide engineering support, including inspection for fabrication, evaluation for transportation, constructability analysis and construction deviation for on-shore and near-shore structures."}, {"id": "s40", "category": "Onshore Structural Engineering", "name": "Fire / Blast Evaluation Design (onshore and offshore facilities)", "desc": "Design new buildings, including control houses or living quarters for fire and blast overpressure requirements.  \nRe-assess existing buildings or living quarters and provide retrofit requirements."}, {"id": "s41", "category": "Offshore Structural Engineering", "name": "Structural Requirements (fixed offshore)", "desc": "Define structural requirements for fixed offshore structures.\nDevelop knowledge of Offshore structures, codes and standards and types of analyses required for fixed offshore platform design."}, {"id": "s42", "category": "Offshore Structural Engineering", "name": "Structural Design and Evaluation  (fixed offshore)", "desc": "Perform analysis of fixed offshore structures. \nUse appropriate structural analysis software. \nDesign and evaluate fixed offshore structures to meet requirements."}, {"id": "s43", "category": "Offshore Structural Engineering", "name": "Structural Integrity Management (fixed and floating offshore structures)", "desc": "Evaluate the structural integrity (reserve strength) of existing facilities.  \nIdentify reinforcement requirements.  \nDevelop Reliability Based Inspection (RBI) Plans.  \nUnderstand the entire process of loading out, float-off, wet and dry tow and offshore installation."}, {"id": "s44", "category": "Offshore Structural Engineering", "name": "Structural Requirements (floating offshore structures)", "desc": "Define structural requirements including environmental, live and dead loads for floating offshore structures."}, {"id": "s45", "category": "Offshore Structural Engineering", "name": "Structure Design and Evaluation (floating offshore)", "desc": "Design and evaluate floating offshore structures to meet structural requirements."}, {"id": "s46", "category": "Offshore Structural Engineering", "name": "Site preparation (off-shore)", "desc": "Design and provide site preparation support."}, {"id": "s47", "category": "Offshore Structural Engineering", "name": "Engineering Support (fixed and floating Offshore)", "desc": "Provide engineering support including inspection for fabrication, evaluation for transportation, and construction deviations."}, {"id": "s48", "category": "Offshore Structural Engineering", "name": "Marine Transportation and Heavy Lift of offshore Structures", "desc": "Evaluate transportation and offshore installation schemes. \nProvide recommendations on transportation and installation methods."}, {"id": "s49", "category": "Process Engineering", "name": "Design", "desc": "Design, specify and document process systems, equipment, materials and related utilities."}, {"id": "s50", "category": "Process Engineering", "name": "Project Support", "desc": "Provide process engineering support aligned with project objectives and drivers.\nApprove engineering contractor deliverables.\nDemonstrate proficiency in CPDEP."}, {"id": "s51", "category": "Process Engineering", "name": "Operations Support", "desc": "Provide process engineering operations support. \nEnsure safe operation of facility, compliance, monitoring, testing, troubleshooting, process optimization, & facilities turnaround support.\nProvide process input to Management of Change (MOC), risk assessments, & review of facility operating procedures."}, {"id": "s52", "category": "Process Engineering", "name": "HES/Process Safety", "desc": "Design and evaluate new and existing process systems to ensure safe, reliable & environmentally compliant facility operations"}, {"id": "s53", "category": "Process Engineering", "name": "Process Controls", "desc": "Develop Process Control design by understanding the underlying processes, DCS/PLC systems, associated field instrumentation, and safety interlock systems.\nAssist in control loop tuning during commissioning and startup."}, {"id": "s54", "category": "Process Engineering", "name": "LNG (Cryogenic)", "desc": "Develop and provide integrated solutions for the technology selection, design and operation of LNG systems."}, {"id": "s55", "category": "Process Engineering", "name": "Flow Assurance", "desc": "Employ principles of fluid flow in pipelines and piping systems (including subsea) in the design, troubleshooting and optimization of facilities. \nProvide technical expertise for the upstream management of multiphase fluids."}, {"id": "s56", "category": "Process Engineering", "name": "Water and Solids Management", "desc": "Define the requirements for delivering production systems to safely manage the impacts of produced water and produced solids on flow assurance, processing and export facilities and the environmental impacts arising from discharges."}, {"id": "s57", "category": "Process Engineering", "name": "Process Modeling and Simulation Systems", "desc": "Design, specify, develop and deploy general steady-state process modeling tools.\nAssess, design, develop and support process model-based systems deployed in operating facilities. \nIdentify and develop system integration and life cycle management requirements. \nDevelop system specifications; manage system development, Factory Acceptance Test (FAT), Site Acceptance Test (SAT) and installation."}, {"id": "s58", "category": "Process Engineering", "name": "Oil Processing Systems", "desc": "Develop and provide integrated solutions for the technology selection, design and operation of Oil Processing Systems."}, {"id": "s59", "category": "Process Engineering", "name": "Gas Processing Systems", "desc": "Develop and provide integrated solutions for the technology selection, design and operation of Gas Processing Systems."}, {"id": "s60", "category": "Process Engineering", "name": "Utilities/Offsites", "desc": "Develop and provide integrated solutions for the design and operation of utilities/offsites systems."}, {"id": "s61", "category": "Process Engineering", "name": "Upgrading/Catalytic Technology", "desc": "Develop and provide integrated solutions for the design and operation of upgrading and catalytic systems."}, {"id": "s62", "category": "Reliability & Integrity", "name": "Root Cause Analysis (RCA)", "desc": "Collect on-site information, analyze performance/incident data and involve the correct parties in identifying root causes. \nDevelop mitigation recommendations to prevent recurrence and validate performance improvement."}, {"id": "s63", "category": "Reliability & Integrity", "name": "Data Analysis/Analytics", "desc": "Collect and organize pertinent data. Apply appropriate reliability tools to establish reliability parameters to support business decisions and analyze performance. \nIdentify Bad/Worst Actors and other reliability opportunities using appropriate analysis tools.  \nEvaluate data, prioritize, develop and execute mitigation procedures."}, {"id": "s64", "category": "Reliability & Integrity", "name": "Reliability Risk Analysis", "desc": "Determine the risk associated with loss of equipment.  \nDevelop definite systematic steps and asset strategies to reduce consequence of failures based on analysis tools."}, {"id": "s65", "category": "Reliability & Integrity", "name": "Reliability Target Setting", "desc": "Establish and quantify optimal reliability targets in early project stages and/or operational performance improvements."}, {"id": "s66", "category": "Reliability & Integrity", "name": "Maintainability and Spare Parts Optimization", "desc": "Quantify trade-offs for cost, effort and time to achieve ease of maintenance through design and operational phases. \nPerform a risk analysis to determine the optimal number of spare parts and warehousing and logistics strategy to maximize operational availability.\nDetermine the effectiveness of existing maintenance strategies. \nConduct Plant Maintenance Optimization (PMO) Incorporate operational experience into maintenance strategy reviews."}, {"id": "s67", "category": "Reliability & Integrity", "name": "Human Factors / Human Reliability", "desc": "Evaluate an existing facility or facility design to determine the impact of human reliability and human-machine interface.\nMake specific recommendations to reduce failures due to the human factors."}, {"id": "s68", "category": "Reliability & Integrity", "name": "Operability", "desc": "Analyze the efficiency, flexibility, and amount of variation (changes of input) a system can withstand without negative consequences.\nMake recommendations for improvement."}, {"id": "s69", "category": "Reliability & Integrity", "name": "Reliability Verification", "desc": "Design a reliability test program.  \nDevelop test programs that effectively study the factors that may affect a product or process.  \nAnalyze experimental results in order to identify the significant factors and evaluate ways to improve and optimize the design.  \nEstablish requirements for Reliability in Design."}, {"id": "s70", "category": "Reliability & Integrity", "name": "Asset Integrity", "desc": "Participate in Asset Integrity assessments for small to medium facilities.\nDevelop and implement recommendations, based upon assessment.  \nManage process to ensure that the Inspection, Test, and Preventive Maintenance (ITPM) tasks are completed along with any required remediation.   \nDevelop understanding of the Surface Equipment Reliability Integrity Process (SERIP) process. \nChampion the Surface Equipment Reliability Integrity Process (SERIP) throughout the facility."}, {"id": "s71", "category": "Reliability & Integrity", "name": "Condition Monitoring", "desc": "Understand the applicability of common condition monitoring techniques, how to analyze the results and be able to assess the effectiveness of any condition monitoring program. \nBe able to identify the correct condition monitoring technique to address a Failure Mode."}, {"id": "s72", "category": "Reliability & Integrity", "name": "Lean Sigma", "desc": "Identify improvement opportunities. Apply Lean Sigma principles and tools to make improvements and to measure and track performance."}, {"id": "s73", "category": "Reliability & Integrity", "name": "Inspection - RBI", "desc": "Provide risk assessment of fixed equipment and develop inspection regimes and mitigation plans."}, {"id": "s74", "category": "Reliability & Integrity", "name": "Inspection - NDE", "desc": "Provide nondestructive examination (NDE) support to facilities / projects; risk assessment of fixed equipment; develop inspection regimes and mitigation plans."}, {"id": "s75", "category": "Subsea Engineering", "name": "Subsea Systems", "desc": "Evaluate, select, configure, design and maintain subsea systems.\nIncluding  management of  the interfaces, processes and data systems."}, {"id": "s76", "category": "Subsea Engineering", "name": "Subsea Controls", "desc": "Evaluate, select, design, operate and maintain subsea control system hardware, software and ancillary equipment."}, {"id": "s77", "category": "Subsea Engineering", "name": "Pipelines and Flowline", "desc": "Design, evaluate, select, fabricate, install and test subsea pipelines and flowlines and   its interfaces with subsea and facility systems."}, {"id": "s78", "category": "Subsea Engineering", "name": "Flexible Pipe and Umbilical", "desc": "Design, evaluate, select, fabricate, install and test flexible pipe and umbilical and its interfaces with other systems."}, {"id": "s79", "category": "Subsea Engineering", "name": "Subsea Equipment", "desc": "Design, evaluate and select  subsea equipment , including  interfaces with other systems."}, {"id": "s80", "category": "Subsea Engineering", "name": "Subsea Operations (includes IRM and Intervention)", "desc": "Provide subsea system operational oversight monitoring production performance and system integrity, availability and reliability.\nProvide subsea systems engineering support; troubleshooting operations and production upsets.\nProvide underwater installation, inspection, repair and maintenance (IRM) engineering, technical and operational support.\nProvide through life field support including developing and maintaining the subsea OMS.\nDevelop and evaluate new intervention, IRM and SS emergency response technologies for use in our subsea operations."}, {"id": "s81", "category": "Subsea Engineering", "name": "Subsea Reliability and Integrity  Management", "desc": "Develop and maintain Integrity Management Systems.  Design reliability into new equipment and facilities, and manage operation of reliability performance."}, {"id": "s82", "category": "Subsea Engineering", "name": "Subsea Boosting Systems", "desc": "Design, evaluate, select, install and document pumping systems."}, {"id": "s83", "category": "Subsea Engineering", "name": "Subsea Power Systems", "desc": "Design, evaluate, select, install and document power systems."}, {"id": "s84", "category": "Subsea Engineering", "name": "Subsea Technical Project Management", "desc": "Manage the execution of subsea projects including development of project scope and schedule, required staffing levels, key interfaces, design, procurement, construction and installation."}, {"id": "s85", "category": "Subsea Engineering", "name": "Subsea Survey and Positioning (supporting skill)", "desc": "Be familiar with current subsea survey and positioning equipment and operational procedures. \nHave core knowledge of geodesy and coordinate projection mathematics and transformation and basic tidal model application. \nAbility to write detailed reports on data quality control and assess operational performance. \nOffshore experience in installation of seabed structures and pipelines and approach to Inspection of subsea facilities."}, {"id": "s86", "category": "Subsea Engineering", "name": "Materials, Corrosion and Cathodic Protection (supporting skill)", "desc": "Select materials of construction and develop equipment integrity plans to ensure safe operations."}, {"id": "s87", "category": "Subsea Engineering", "name": "Subsea Flow Assurance Application (supporting skill)", "desc": "Recognize and explain the impact of flow assurance on the design of subsea equipment and the potential operational  issues associated.\nManage the interfaces between the subsea team and the flow assurance SME."}, {"id": "s88", "category": "Electrical Power Engineering", "name": "Generator Configuration", "desc": "Configure power generation system to determine size and number of generator sets and connection to power distribution systems. \nDefine and perform the testing, installation, commissioning, operation and maintenance of the system."}, {"id": "s89", "category": "Electrical Power Engineering", "name": "Distribution Systems Design", "desc": "Design electrical distribution systems and select electrical equipment."}, {"id": "s90", "category": "Electrical Power Engineering", "name": "Circuit Design", "desc": "Design feeders and motor branch circuits. \nDesign, define and determine the testing, installation, commissioning, operation and maintenance of the system."}, {"id": "s91", "category": "Electrical Power Engineering", "name": "Diagram and Schematic Development and Review", "desc": "Describe power systems, arrangements and equipment using detailed one line diagrams, three line diagrams and control schematics."}, {"id": "s92", "category": "Electrical Power Engineering", "name": "Power Systems Design", "desc": "Design and implement power management systems and fast load shed systems.\nEvaluate the impact and understand the application characteristics of variable speed drives, soft starters and direct line starting of motors. \nDesign, define and determine the testing, installation, commissioning, operation and maintenance of the system."}, {"id": "s93", "category": "Electrical Power Engineering", "name": "Rotating Equipment Selection", "desc": "Conduct motor and generator selections and specifications.\nSpecify and select motor and generator. \nDesign, define and determine the testing, installation, commissioning, operation and maintenance of the system."}, {"id": "s94", "category": "Electrical Power Engineering", "name": "Power System Analysis", "desc": "Prepare, analyze, and apply power systems studies using modeling software."}, {"id": "s95", "category": "Electrical Power Engineering", "name": "Protective Relaying", "desc": "Select and apply the appropriate circuit protective devices and coordinate/ configure the devices."}, {"id": "s96", "category": "Electrical Power Engineering", "name": "Ancillary / Auxiliary Systems", "desc": "Design, apply and troubleshoot Uninterrupted Power Supply (UPS), DC systems and essential and standby generator systems."}, {"id": "s97", "category": "Electrical Power Engineering", "name": "Lighting Systems", "desc": "Design, apply and troubleshoot lighting systems, lightning, navigation aids, aerial marker lighting and cathodic protection.\nDesign, define and determine the testing, installation, commissioning, operation and maintenance of the system."}, {"id": "s98", "category": "Electrical Power Engineering", "name": "Operations, Troubleshooting and Maintenance", "desc": "Improve condition monitoring and troubleshooting of electrical systems, including power generation, working with Operations and Maintenance to improve the integrity of equipment and systems."}, {"id": "s99", "category": "Electrical Power Engineering", "name": "Safe Work Practices", "desc": "Develop, review and approve Job Safety Analyses, Job Briefings and Energized Electrical Work Permits."}, {"id": "s100", "category": "Electrical Power Engineering", "name": "Lightning Protection", "desc": "Design, select and apply lightning protection. \nApply the appropriate Chevron and industry standards to determine the zones of protection. \nSelect air terminals, bonding, grounding, surge protection and cathodic protection. Assist with the installation, commissioning and maintenance of the system. \nDesign, define and determine the testing, installation, commissioning, operation and maintenance of the system."}, {"id": "s101", "category": "Electrical Power Engineering", "name": "Switchgear Building", "desc": "Define requirements for switchgear, motor control or electrical equipment buildings.\nDesign, define and determine the testing, installation, commissioning, operation and maintenance of the system."}, {"id": "s102", "category": "Electrical Power Engineering", "name": "Variable Speed Drive (VSD) System Design", "desc": "Design Variable Speed Drive (VSD) systems for electrical motors.\nDesign, define and determine the testing, installation, commissioning, operation and maintenance of the system."}, {"id": "s103", "category": "Electrical Power Engineering", "name": "Hazardous Area Classification and Equipment Protection Rating", "desc": "Develop, review and apply the hazardous area classification in accordance to API and applicable Chevron standards. \nSelect the appropriate Hazardous Classification protection for electrical apparatus in accordance to the area classification using Chevron and industry standards."}, {"id": "s104", "category": "Instrumentation and Controls", "name": "Instruments and Valves", "desc": "Design, document and maintain field instrumentation.\nInstall and test field instrumentation.\nSupport the installation, testing and commissioning of systems and maintain and troubleshoot field instrumentation."}, {"id": "s105", "category": "Instrumentation and Controls", "name": "Safety Systems", "desc": "Design and document safety systems & meet regulatory requirements.\nSupport and modify these systems in the field."}, {"id": "s106", "category": "Instrumentation and Controls", "name": "Control Systems", "desc": "Design a process control system."}, {"id": "s107", "category": "Instrumentation and Controls", "name": "Measurement and Custody Transfer", "desc": "Review application needs and process conditions, select and size appropriate end device, select matching instrument, develop data sheets. \nObtain and apply design specification from the sales contract and appropriate measurement standard.\nOversee the fabrication, installation, commissioning and start-up of systems."}, {"id": "s108", "category": "Instrumentation and Controls", "name": "Analyzers", "desc": "Define process measurement requirements, review the application, specify analyzer technology, and select appropriate analyzer. \nDevelop Request for Quotation (RFQ). \nTroubleshoot and modify existing analyzer systems.\nDevelop performance tracking programs."}, {"id": "s109", "category": "Instrumentation and Controls", "name": "Data Transmission", "desc": "Design data transmission system from field to historian to ensure connectivity to remote end devices.\nIdentify stakeholder data requirements and develop strategy to manage."}, {"id": "s110", "category": "Instrumentation and Controls", "name": "Networks and Security", "desc": "Perform PCN security assessments for existing and new PCN System and implement adequate risk mitigation."}, {"id": "s111", "category": "Instrumentation and Controls", "name": "Human Factors", "desc": "Ensure situational awareness of operational staff.\nConfigure control room environment, including room layout, lighting and selecting ergonomic furniture."}, {"id": "s112", "category": "Instrumentation and Controls", "name": "Optimization", "desc": "Optimize performance of control systems using advance process control system to enhance production throughput and meet production goals."}, {"id": "s113", "category": "Instrumentation and Controls", "name": "Alarm Management", "desc": "Define, develop, deploy and support technologies related to alarm lifecycle management, advanced alarm management and fault detection."}, {"id": "s114", "category": "Marine Engineer", "name": "Structural Engineering (Marine Engineer Perspective)", "desc": "Verify structural arrangement and define standards, assess, evaluate & mitigate vibration & noise (machinery & foundations)."}, {"id": "s115", "category": "Marine Engineer", "name": "Naval Architecture (Marine Engineer Perspective)", "desc": "Interface with Naval Architect regarding steering systems, propulsion, accommodation & cargo systems."}, {"id": "s116", "category": "Marine Engineer", "name": "Marine Engineering (Shipping and vessel focused) (Marine Engineer Perspective)", "desc": "Define movement and positioning requirements, propulsion equipment, propulsion system auxiliary systems, facility / vessel support system requirements, people support system, fire, safety and life saving requirements.  Assess machinery / equipment vibration, material selection, protection for systems / equipment, reliability, maintainability and redundancy."}, {"id": "s117", "category": "Marine Engineer", "name": "Instrumentation & Electrical (Marine Engineer Perspective)", "desc": "Assess and define basic power requirements.  Assess and review power management, shut down systems and environment facilities monitoring system.  Assess and select navigation, communication and Entertainment equipment and apply marine codes / standards to the project."}, {"id": "s118", "category": "Marine Engineer", "name": "Global Response (Marine Engineer Perspective)", "desc": "Interface with Naval Architect regarding global response."}, {"id": "s119", "category": "Marine Engineer", "name": "Mooring (Station Keeping) (Marine Engineer Perspective)", "desc": "Work with naval architect to gather information on equipment & any associated interface (machinery selection, structural reinforcement, etc.)."}, {"id": "s120", "category": "Marine Engineer", "name": "Marine Operations (Marine Engineer Perspective)", "desc": "Designs / Specifies human factors and operability."}, {"id": "s121", "category": "Marine Engineer", "name": "Cryogenic (LNG/LPG) (Marine Engineer Perspective)", "desc": "Review and select cryogenic, fuel supply, fire fighting, gas monitoring, ESD and gas reliquification / regasification  systems."}, {"id": "s122", "category": "Marine Engineer", "name": "Salvage & Repair (Marine Engineer Perspective)", "desc": "Work within incident command structure to assess integrity of existing or damaged systems and stabilize current operating conditions.  Execute SimOps to refurbish vessel for operations (systems) and participate in the development of the salvage plan."}, {"id": "s123", "category": "Marine Engineer", "name": "Integrity Management (Marine Engineer Perspective)", "desc": "Using inspection reports, assess condition of piping and valve systems.  Survey and assess machinery, equipment and systems, including tail shaft & propeller.  Evaluate process systems & equipment."}, {"id": "s124", "category": "Naval Architect", "name": "Structural Engineering (Naval Architect Perspective)", "desc": "Define structural requirements and analyze structural strength, including fatigue of structures.  Assess hull vibration and verify compliance with applicable codes / standards for structures."}, {"id": "s125", "category": "Naval Architect", "name": "Naval Architecture (Naval Architect Perspective)", "desc": "Assess floating system or vessel requirements and evaluate hydrostatic data, weights and distribution.  Assess draft, trim, cargo requirements & segregation, stability and subdivision."}, {"id": "s126", "category": "Naval Architect", "name": "Marine Engineering (Naval Architect Perspective)", "desc": "Select propeller design & propulsion enhancements.  Interface with marine engineer on speed, propulsion, Dynamic Positioning, Vibration, Weights, structures, Stability and subdivision."}, {"id": "s127", "category": "Naval Architect", "name": "Instrumentation & Electrical (Naval Architect Perspective)", "desc": "Coordinate with Marine Engineer on basic power requirements."}, {"id": "s128", "category": "Naval Architect", "name": "Mooring (Station Keeping) (Naval Architect Perspective)", "desc": "Conduct mooring analysis and define anchoring and mooring arrangement.  Select turret, on-vessel mooring equipment, buoys/other mooring arrangements and review installation and hook up procedures / equipment."}, {"id": "s129", "category": "Naval Architect", "name": "Marine Operations (Naval Architect Perspective)", "desc": "Interface with O&M group on human factors and operability."}, {"id": "s130", "category": "Naval Architect", "name": "Cryogenic (LNG/LPG) (Naval Architect Perspective)", "desc": "Assess & specify cargo containment systems & insulation.  Review cargo containment system interface, partial loading issues, sloshing, emergency departure and design to ensure that it incorporates measures to maintain containment integrity in the event of failures or damage."}, {"id": "s131", "category": "Naval Architect", "name": "Salvage & Repair (Naval Architect Perspective)", "desc": "Work within incident command structure to assess integrity of existing or damaged hull structure.  Stabilize current operating conditions and execute SimOps to refurbish vessel for operations."}, {"id": "s132", "category": "Naval Architect", "name": "Integrity Management (Naval Architect Perspective)", "desc": "Conduct condition assessments & maintenance turnarounds.  Evaluate turrets, moorings, structures, tendons and risers for integrity.  Coordinate with classification authorities."}, {"id": "s133", "category": "Naval Architect", "name": "Global Response (Naval Architect Perspective)", "desc": "Assess resistance propulsion, maneuverability, sea keeping, stability, wind drag, wind loads, global response, VIM (Vortex induced motion) and cavitation."}, {"id": "s134", "category": "Naval Architect", "name": "Hydrodynamics & Global Motion", "desc": "Define global motions and loads arising from offshore structures interactions with wind, wave and current."}, {"id": "s135", "category": "Project Management", "name": "Chevron Project Management System", "desc": ""}, {"id": "s136", "category": "Project Management", "name": "Framing", "desc": ""}, {"id": "s137", "category": "Project Management", "name": "Project Execution Planning (PEP)", "desc": ""}, {"id": "s138", "category": "Project Management", "name": "Assurance Planning", "desc": ""}, {"id": "s139", "category": "Project Management", "name": "Generate and Evaluate Alternatives", "desc": ""}, {"id": "s140", "category": "Project Management", "name": "Stakeholder Management", "desc": ""}, {"id": "s141", "category": "Project Management", "name": "Project Reporting", "desc": ""}, {"id": "s142", "category": "Project Management", "name": "Value Improving Practices (VIPs)", "desc": ""}, {"id": "s143", "category": "Project Management", "name": "Project Staffing and Staff Development", "desc": ""}, {"id": "s144", "category": "Project Management", "name": "Project Scope Development", "desc": ""}, {"id": "s145", "category": "Project Management", "name": "Technology Planning and Management", "desc": ""}, {"id": "s146", "category": "Project Management", "name": "Project Specific Technology", "desc": ""}, {"id": "s147", "category": "Project Management", "name": "Construction Planning and Management", "desc": ""}, {"id": "s148", "category": "Project Management", "name": "Engineering Planning and Management", "desc": ""}, {"id": "s149", "category": "Project Management", "name": "Quality Management and Standards Quality Management Plans Development - part 1", "desc": ""}, {"id": "s150", "category": "Project Management", "name": "Commissioning, Handover, Startup Support", "desc": ""}, {"id": "s151", "category": "Project Management", "name": "Risk Management Planning", "desc": ""}, {"id": "s152", "category": "Project Management", "name": "Public Affairs and Local Community", "desc": ""}, {"id": "s153", "category": "Project Management", "name": "Legal and Regulatory Issues", "desc": ""}, {"id": "s154", "category": "Project Management", "name": "Decision Analysis", "desc": ""}, {"id": "s155", "category": "Project Management", "name": "Value Chain", "desc": ""}, {"id": "s156", "category": "Project Management", "name": "Investment Analysis", "desc": ""}, {"id": "s157", "category": "Project Management", "name": "NOC and Government Relationships", "desc": ""}, {"id": "s158", "category": "Project Management", "name": "Business Acumen Relating to Project Management - part 1", "desc": ""}, {"id": "s159", "category": "Project Management", "name": "Business Acumen Relating to Project Management - part 2", "desc": ""}, {"id": "s160", "category": "Project Management", "name": "Project Communications", "desc": ""}, {"id": "s161", "category": "Project Management", "name": "Liability and Insurance Management", "desc": ""}, {"id": "s162", "category": "Project Management", "name": "Joint Venture (JV) Partner Relationships", "desc": ""}, {"id": "s163", "category": "Project Management", "name": "Project Close-out", "desc": ""}, {"id": "s164", "category": "Project Management", "name": "Project Controls", "desc": ""}, {"id": "s165", "category": "Project Management", "name": "Cost and Schedule Assurance", "desc": ""}, {"id": "s166", "category": "Project Management", "name": "Benchmarking", "desc": ""}, {"id": "s167", "category": "Project Management", "name": "Contracting Strategies and Management", "desc": ""}, {"id": "s168", "category": "Project Management", "name": "Logistics Planning", "desc": ""}, {"id": "s169", "category": "Project Management", "name": "Project Materials, Procurement Control, and Execution", "desc": ""}, {"id": "s170", "category": "Project Management", "name": "Health, Environment, and Safety (HES)", "desc": ""}, {"id": "s171", "category": "Project Management", "name": "Operability, Reliability, Maintenance (ORM)", "desc": ""}, {"id": "s172", "category": "Project Management", "name": "CSOC Behavior", "desc": ""}, {"id": "s173", "category": "Project Management", "name": "Decision Quality", "desc": ""}, {"id": "s174", "category": "Project Management", "name": "Decision Review Board (DRB) Management", "desc": ""}, {"id": "s175", "category": "Cost Engineering", "name": "PRC and Cost Engineering Organization, Services, and Strategies", "desc": ""}, {"id": "s176", "category": "Cost Engineering", "name": "Chevron Conduct and Ethics, Compliance, and Policies", "desc": ""}, {"id": "s177", "category": "Cost Engineering", "name": "CPDEP and Application to Cost Engineering", "desc": ""}, {"id": "s178", "category": "Cost Engineering", "name": "Funding Appropriations and Business Planning", "desc": ""}, {"id": "s179", "category": "Cost Engineering", "name": "Project Scope and Execution Strategy Development", "desc": ""}, {"id": "s180", "category": "Cost Engineering", "name": "Schedule Planning and Development", "desc": ""}, {"id": "s181", "category": "Cost Engineering", "name": "Cost Estimating and Budgeting", "desc": ""}, {"id": "s182", "category": "Cost Engineering", "name": "Resource Planning", "desc": ""}, {"id": "s183", "category": "Cost Engineering", "name": "Cost Engineering Risk Management", "desc": ""}, {"id": "s184", "category": "Cost Engineering", "name": "Contracting and Procurement Cost Engineering Interfaces", "desc": ""}, {"id": "s185", "category": "Cost Engineering", "name": "Project Control Plan Implementation", "desc": ""}, {"id": "s186", "category": "Cost Engineering", "name": "Project Cost Accounting", "desc": ""}, {"id": "s187", "category": "Cost Engineering", "name": "Progress and Performance Measurement", "desc": ""}, {"id": "s188", "category": "Cost Engineering", "name": "Project Performance Assessment", "desc": ""}, {"id": "s189", "category": "Cost Engineering", "name": "Forecasting", "desc": ""}, {"id": "s190", "category": "Cost Engineering", "name": "Cost Engineering Change Management", "desc": ""}, {"id": "s191", "category": "Cost Engineering", "name": "Data and Lessons Learned", "desc": ""}], "registers": [{"key": "pm", "label": "Project Management", "positions": {"Project Engineer": [{"id": "s3", "t": 2}, {"id": "s5", "t": 2}, {"id": "s11", "t": 2}, {"id": "s12", "t": 2}, {"id": "s135", "t": 2}, {"id": "s136", "t": 2}, {"id": "s137", "t": 2}, {"id": "s138", "t": 2}, {"id": "s139", "t": 2}, {"id": "s140", "t": 2}, {"id": "s141", "t": 2}, {"id": "s143", "t": 2}, {"id": "s145", "t": 2}, {"id": "s146", "t": 2}, {"id": "s147", "t": 2}], "Lead Project Engineer": [{"id": "s3", "t": 3}, {"id": "s5", "t": 3}, {"id": "s11", "t": 3}, {"id": "s12", "t": 3}, {"id": "s135", "t": 3}, {"id": "s136", "t": 3}, {"id": "s137", "t": 3}, {"id": "s138", "t": 3}, {"id": "s139", "t": 3}, {"id": "s140", "t": 3}, {"id": "s141", "t": 3}, {"id": "s143", "t": 3}, {"id": "s145", "t": 3}, {"id": "s146", "t": 3}, {"id": "s147", "t": 3}], "Construction Engineer": [{"id": "s2", "t": 2}, {"id": "s3", "t": 2}, {"id": "s5", "t": 2}, {"id": "s7", "t": 2}, {"id": "s8", "t": 2}, {"id": "s10", "t": 2}, {"id": "s12", "t": 2}, {"id": "s135", "t": 2}, {"id": "s137", "t": 2}, {"id": "s147", "t": 2}, {"id": "s150", "t": 2}, {"id": "s164", "t": 2}, {"id": "s165", "t": 2}, {"id": "s167", "t": 2}], "Lead Construction Engineer": [{"id": "s2", "t": 2}, {"id": "s3", "t": 3}, {"id": "s5", "t": 3}, {"id": "s7", "t": 3}, {"id": "s8", "t": 2}, {"id": "s10", "t": 3}, {"id": "s12", "t": 2}, {"id": "s135", "t": 3}, {"id": "s137", "t": 3}, {"id": "s147", "t": 3}, {"id": "s150", "t": 3}, {"id": "s164", "t": 3}, {"id": "s165", "t": 3}, {"id": "s167", "t": 3}], "Cost Engineer": [{"id": "s11", "t": 2}, {"id": "s12", "t": 2}, {"id": "s135", "t": 2}, {"id": "s141", "t": 2}, {"id": "s165", "t": 2}, {"id": "s177", "t": 3}, {"id": "s180", "t": 3}, {"id": "s181", "t": 3}, {"id": "s183", "t": 3}, {"id": "s185", "t": 3}, {"id": "s187", "t": 3}, {"id": "s188", "t": 3}, {"id": "s189", "t": 3}, {"id": "s190", "t": 3}, {"id": "s191", "t": 3}], "Lead Cost Engineer": [{"id": "s11", "t": 3}, {"id": "s12", "t": 3}, {"id": "s135", "t": 3}, {"id": "s141", "t": 3}, {"id": "s165", "t": 3}, {"id": "s177", "t": 4}, {"id": "s180", "t": 4}, {"id": "s181", "t": 4}, {"id": "s183", "t": 4}, {"id": "s185", "t": 4}, {"id": "s187", "t": 4}, {"id": "s188", "t": 4}, {"id": "s189", "t": 4}, {"id": "s190", "t": 4}, {"id": "s191", "t": 4}]}}, {"key": "gnfeo", "label": "General Surface Facilities Engineer (GNFEO)", "positions": {"General Facilities Engineer": [{"id": "s2", "t": 3}, {"id": "s3", "t": 2}, {"id": "s4", "t": 2}, {"id": "s5", "t": 2}, {"id": "s6", "t": 2}, {"id": "s7", "t": 3}, {"id": "s8", "t": 2}, {"id": "s12", "t": 2}, {"id": "s16", "t": 2}, {"id": "s17", "t": 2}, {"id": "s19", "t": 2}, {"id": "s20", "t": 2}, {"id": "s22", "t": 2}, {"id": "s51", "t": 2}, {"id": "s104", "t": 2}]}}, {"key": "disc", "label": "Discipline Engineering", "positions": {"Onshore Civil/Structural Engineer": [{"id": "s1", "t": 2}, {"id": "s3", "t": 3}, {"id": "s8", "t": 2}, {"id": "s28", "t": 3}, {"id": "s29", "t": 3}, {"id": "s31", "t": 3}, {"id": "s32", "t": 3}, {"id": "s33", "t": 3}, {"id": "s34", "t": 3}, {"id": "s35", "t": 2}, {"id": "s36", "t": 3}, {"id": "s37", "t": 3}, {"id": "s38", "t": 3}, {"id": "s39", "t": 3}, {"id": "s40", "t": 2}], "Offshore Structural Engineer": [{"id": "s1", "t": 2}, {"id": "s3", "t": 3}, {"id": "s8", "t": 2}, {"id": "s40", "t": 2}, {"id": "s41", "t": 3}, {"id": "s42", "t": 3}, {"id": "s43", "t": 3}, {"id": "s44", "t": 3}, {"id": "s45", "t": 3}, {"id": "s47", "t": 3}, {"id": "s48", "t": 3}, {"id": "s114", "t": 3}, {"id": "s124", "t": 3}, {"id": "s128", "t": 3}], "Marine Engineer": [{"id": "s1", "t": 2}, {"id": "s3", "t": 3}, {"id": "s43", "t": 3}, {"id": "s44", "t": 3}, {"id": "s45", "t": 3}, {"id": "s47", "t": 3}, {"id": "s48", "t": 3}, {"id": "s114", "t": 3}, {"id": "s115", "t": 3}, {"id": "s116", "t": 3}, {"id": "s117", "t": 3}, {"id": "s118", "t": 3}, {"id": "s119", "t": 3}, {"id": "s122", "t": 3}, {"id": "s123", "t": 3}], "Electrical Power Engineer": [{"id": "s3", "t": 3}, {"id": "s88", "t": 2}, {"id": "s89", "t": 3}, {"id": "s90", "t": 3}, {"id": "s91", "t": 3}, {"id": "s92", "t": 3}, {"id": "s93", "t": 2}, {"id": "s94", "t": 3}, {"id": "s95", "t": 3}, {"id": "s98", "t": 3}, {"id": "s99", "t": 2}, {"id": "s100", "t": 3}, {"id": "s101", "t": 2}, {"id": "s103", "t": 2}], "Electrical Engineer": [{"id": "s3", "t": 3}, {"id": "s88", "t": 2}, {"id": "s89", "t": 2}, {"id": "s90", "t": 2}, {"id": "s91", "t": 3}, {"id": "s92", "t": 3}, {"id": "s93", "t": 3}, {"id": "s94", "t": 3}, {"id": "s95", "t": 3}, {"id": "s98", "t": 3}, {"id": "s99", "t": 2}, {"id": "s100", "t": 2}, {"id": "s101", "t": 2}, {"id": "s102", "t": 2}, {"id": "s103", "t": 3}], "I&C Engineer": [{"id": "s3", "t": 3}, {"id": "s104", "t": 3}, {"id": "s105", "t": 2}, {"id": "s106", "t": 2}, {"id": "s107", "t": 3}, {"id": "s108", "t": 2}, {"id": "s109", "t": 2}, {"id": "s110", "t": 2}, {"id": "s111", "t": 2}, {"id": "s112", "t": 1}, {"id": "s113", "t": 2}], "Mechanical Engineer - Fixed": [{"id": "s2", "t": 2}, {"id": "s3", "t": 3}, {"id": "s8", "t": 2}, {"id": "s11", "t": 2}, {"id": "s13", "t": 2}, {"id": "s14", "t": 3}, {"id": "s15", "t": 2}, {"id": "s16", "t": 3}, {"id": "s17", "t": 3}, {"id": "s18", "t": 2}, {"id": "s19", "t": 3}, {"id": "s20", "t": 3}, {"id": "s21", "t": 3}], "Mechanical Engineer - Rotating": [{"id": "s2", "t": 2}, {"id": "s3", "t": 3}, {"id": "s8", "t": 2}, {"id": "s11", "t": 2}, {"id": "s16", "t": 2}, {"id": "s21", "t": 2}, {"id": "s22", "t": 3}, {"id": "s23", "t": 3}, {"id": "s24", "t": 3}, {"id": "s25", "t": 3}, {"id": "s26", "t": 2}], "Process Engineer": [{"id": "s3", "t": 3}, {"id": "s4", "t": 3}, {"id": "s49", "t": 2}, {"id": "s50", "t": 3}, {"id": "s51", "t": 3}, {"id": "s52", "t": 3}, {"id": "s53", "t": 2}, {"id": "s55", "t": 3}, {"id": "s56", "t": 2}, {"id": "s57", "t": 2}, {"id": "s58", "t": 3}, {"id": "s59", "t": 2}, {"id": "s60", "t": 2}], "Process Engineer - Geothermal": [{"id": "s3", "t": 3}, {"id": "s4", "t": 3}, {"id": "s49", "t": 2}, {"id": "s50", "t": 3}, {"id": "s51", "t": 3}, {"id": "s52", "t": 3}, {"id": "s53", "t": 2}, {"id": "s55", "t": 3}, {"id": "s57", "t": 2}, {"id": "s58", "t": 2}, {"id": "s59", "t": 3}, {"id": "s60", "t": 3}], "Process Design Engineer": [{"id": "s3", "t": 3}, {"id": "s49", "t": 3}, {"id": "s50", "t": 3}, {"id": "s51", "t": 3}, {"id": "s52", "t": 3}, {"id": "s53", "t": 2}, {"id": "s55", "t": 3}, {"id": "s56", "t": 2}, {"id": "s57", "t": 3}, {"id": "s58", "t": 3}, {"id": "s59", "t": 3}, {"id": "s60", "t": 3}], "Reliability & Integrity Engineer - Fixed": [{"id": "s16", "t": 3}, {"id": "s17", "t": 3}, {"id": "s18", "t": 2}, {"id": "s19", "t": 3}, {"id": "s20", "t": 3}, {"id": "s21", "t": 3}, {"id": "s62", "t": 2}, {"id": "s63", "t": 2}, {"id": "s64", "t": 2}, {"id": "s70", "t": 3}, {"id": "s72", "t": 3}, {"id": "s73", "t": 2}, {"id": "s74", "t": 2}], "Reliability & Integrity Engineer - Rotating": [{"id": "s22", "t": 3}, {"id": "s23", "t": 3}, {"id": "s24", "t": 3}, {"id": "s25", "t": 3}, {"id": "s26", "t": 2}, {"id": "s62", "t": 2}, {"id": "s63", "t": 2}, {"id": "s64", "t": 2}, {"id": "s70", "t": 3}, {"id": "s72", "t": 3}, {"id": "s73", "t": 2}, {"id": "s74", "t": 2}]}}]};
+const PPM_DATA = {"core": [{"id": "c1", "name": "Financial and Economic Analysis", "levels": ["Memahami konsep dasar analisis laporan keuangan, proyeksi anggaran, dan indikator ekonomi", "Melakukan analisis laporan keuangan, proyeksi anggaran, dan indikator ekonomi", "Memiliki keterlibatan strategis dalam valuasi dan pengelolaan portofolio multi-unit", "Mampu mengambil keputusan strategis, termasuk alokasi modal di tingkat holding"]}, {"id": "c2", "name": "Portfolio Optimization", "levels": ["Memahami konsep dasar budgeting dan rasio keuangan", "Melakukan analisis budgeting dan rasio keuangan", "Melakukan evaluasi multiproyek, dan pengelolaan risiko terintegrasi", "Berperan dalam diversifikasi portofolio energi dan penyelarasan strategis antar sub-holding"]}, {"id": "c3", "name": "Risk Management", "levels": ["Memahami konsep dasar analisis risiko, pengelolaan risiko, dan prediksi risiko berbasis data", "Melakukan analisis risiko, pengelolaan risiko, dan prediksi risiko berbasis data", "Memahami skenario global dan stress test untuk portofolio holding", "Mampu melakukan pengukuran performa berbasis risiko secara terintegrasi"]}, {"id": "c4", "name": "Strategic Planning", "levels": ["Memahami konsep perencanaan bisnis dasar", "Melakukan analisis perencanaan bisnis", "Mengembangkan rencana strategis jangka panjang berbasis skenario", "Berperan dalam perencanaan strategis, termasuk integrasi lini bisnis"]}, {"id": "c5", "name": "Performance Monitoring", "levels": ["Memahami konsep penilaian performa suatu entitas", "Melakukan analisis penilaian performa suatu entitas", "Memastikan pelacakan kinerja yang optimal untuk inisiatif strategis", "Menyelaraskan performa lintas lini bisnis"]}, {"id": "c6", "name": "Regulatory and Policy", "levels": ["Memahami konsep dasar regulasi energi", "Melakukan analisis dampak kebijakan", "Dapat menyusun kerangka kebijakan", "Mampu mengintegrasikan tata kelola regulasi, termasuk melakukan negosiasi"]}, {"id": "c7", "name": "Stakeholder Management", "levels": ["Memahami konsep dasar pengelolaan pemangku kepentingan", "Melakukan pemetaan kebutuhan pemangku kepentingan", "Dapat menyusun strategi pemenuhan kebutuhan pemangku kepentingan", "Mampu membangun hubungan strategis dan menjaga hubungan lintas unit bisnis"]}, {"id": "c8", "name": "Corporate Action", "levels": ["Memahami konsep dasar analisa aksi korporasi", "Melakukan evaluasi atas pelaksanaan aksi korporasi", "Dapat memastikan kelayakan strategis aksi korporasi", "Mampu menyelaraskan keputusan strategis aksi korporasi"]}], "specificGeneric": {"def": "Kemampuan dan pengetahuan yang mempelajari aspek teknis dari setiap specific competency untuk memahami kondisi teknis yang dihadapi guna memberikan pertimbangan atau rekomendasi dalam pengambilan keputusan manajemen.", "levels": ["Mampu memahami prinsip-prinsip dasar serta proses bisnis dari {c}. Mampu memahami data dan informasi mengenai {c}.", "Mampu memahami issue, melakukan analisis, serta sintesa sederhana terkait {c} (mis. menguraikan hubungan sebab-akibat, menjelaskan, dan menarik kesimpulan terkait faktor kunci yang berpengaruh; membandingkan kinerja).", "Mampu menganalisis dan melakukan sintesa yang lebih kompleks terkait {c}; mampu melakukan evaluasi dan membuat rekomendasi terhadap analisis/prosedur/metode terkait {c}.", "Mampu mendesain dan menyempurnakan sistem/pendekatan baru terkait {c} (mis. merevisi strategi untuk meningkatkan nilai portofolio, mengkategorikan aset dan menyusun strategi yang sesuai, menjadi konsultan internal)."]}, "streams": [{"key": "upstream", "label": "Upstream", "manager": "Manager Portfolio Management I", "specific": ["Upstream Business Process (Exploration, Development & Production)", "Upstream Asset Merger & Acquisition", "Reserves & Resources Management", "Upstream Fiscal Term (Production Sharing Contract)", "Low Carbon Business"]}, {"key": "gas", "label": "Gas", "manager": "Manager Portfolio Management I", "specific": ["Gas Business Process", "Gas Market & Trading (Nomination & Tariff Mechanism)", "Gas Supply Chain & Infrastructure", "Gas Asset Valuation", "Gas Price Contract & Regulation"]}, {"key": "refinery", "label": "Refinery & Petrochemical", "manager": "Manager Portfolio Management II", "specific": ["Refinery & Petrochem Business Process (Refining Process, unit knowledge)", "Feedstock & Product Management/Optimization", "Supply & Logistic Operations", "Infrastructure Project/Business Development", "Refinery Financial Structure (Spread, GRM, operational expenditure, impairment)"]}, {"key": "commercial", "label": "Commercial & Trading", "manager": "Manager Portfolio Management II", "specific": ["Commercial & Trading Business Process", "Commercial & Trading Infrastructure", "Commercial & Trading Innovation & Digitalization", "Commercial & Trading Business Development", "Commercial & Trading Contract & Regulation"]}, {"key": "marine", "label": "Shipping, Marine & Terminal / Integrated Marine Logistics", "manager": "Manager Portfolio Management III", "specific": ["Shipping, Marine, & Terminal Business Process", "Shipping & Terminal Infrastructure", "Shipping, Marine, & Terminal Innovation & Digitalization", "Shipping, Marine, & Terminal Business Development", "Shipping, Marine, & Terminal Contract & Regulation"]}, {"key": "pnre", "label": "Power & New Renewable Energy (PNRE)", "manager": "Manager Portfolio Management III", "specific": ["PNRE Business Process", "PNRE Business Development", "Reserves & Resources Management", "CCS/CCUS", "NRE Opportunity"]}, {"key": "healthcare", "label": "Healthcare", "manager": "Manager Portfolio Management IV", "specific": ["Healthcare Business Process (Hospital, Clinic, Laboratory, Pharmacy)", "Healthcare Business Merger & Acquisition", "Healthcare Technology & Innovation", "Healthcare Business / Asset Valuation", "Healthcare Regulation"]}, {"key": "hospitality", "label": "Hospitality & Property", "manager": "Manager Portfolio Management IV", "specific": ["Hospitality & Property Business Process", "Property Business Merger & Acquisition", "Asset Management", "Asset Valuation", "Hospitality & Property Development Regulation"]}, {"key": "airlines", "label": "Airlines & Aircraft Maintenance", "manager": "Manager Portfolio Management IV", "specific": ["Airlines & Aircraft Maintenance Business Process", "Airlines Business Merger & Acquisition", "Fleet Management", "Aircraft Valuation", "Airlines Regulation"]}, {"key": "training", "label": "Training & Consulting", "manager": "Manager Portfolio Management IV", "specific": ["Training & Consulting Business Process", "Project Management", "Program Design & Delivery", "Team Leadership & Development", "Manpower Regulation"]}, {"key": "insurance", "label": "Insurance", "manager": "Manager Portfolio Management IV", "specific": ["Insurance Business Process", "Business Intelligence", "Strategic Portfolio Management", "Product Development & Innovation", "Insurance Regulation"]}, {"key": "investment", "label": "Investment", "manager": "Manager Portfolio Management IV", "specific": ["Investment Business Process (Stocks, Obligation, Deposit)", "Investment Strategy & Decision Making", "Strategic Portfolio Planning", "Economic & Market Research", "Investment Regulation"]}], "levelBands": [{"level": 1, "title": "Jr. Analyst", "band": "PRL12-13"}, {"level": 2, "title": "Analyst", "band": "PRL14-15"}, {"level": 3, "title": "Sr. Analyst", "band": "PRL16-18"}, {"level": 4, "title": "Manager/Sr. Expert", "band": "PRL19+"}]};
+
+const LEVELS = FE_DATA.levels; // [{level,label,desc}] shared 0-4 scale
+
+const FE_CATALOG = {};
+FE_DATA.catalog.forEach(function (s) { FE_CATALOG[s.id] = s; });
+
+const FRAMEWORKS = [
+  {
+    key: "ppm",
+    name: "Portfolio Management",
+    desc: "PIVOT competency matrix — 8 core skills plus the specific skills of one business stream.",
+    meta: "12 streams",
+  },
+  {
+    key: "pm",
+    name: "Project Management",
+    desc: "FE Skills Register — project, construction and cost engineering roles.",
+    meta: FE_DATA.registers.find(function (r) { return r.key === "pm"; }).label ? "6 roles" : "",
+  },
+  {
+    key: "gnfeo",
+    name: "General Surface Facilities Engineer",
+    desc: "FE Skills Register — the GNFEO position.",
+    meta: "1 role",
+  },
+  {
+    key: "disc",
+    name: "Discipline Engineering",
+    desc: "FE Skills Register — 13 technical discipline roles, from civil/structural to reliability.",
+    meta: "13 roles",
+  },
+];
+
+/* ============================= STATE ============================= */
+const state = {
+  framework: null,
+  fePosition: null,
+  ppmStream: null,
+  ppmBand: null,
+  cvText: "",
+  running: false,
+  result: null,
+  truncatedCv: false,
+  mode: "offline",
+};
+
+/* ============================= HELPERS ============================= */
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  });
+}
+
+function feRegister(key) {
+  return FE_DATA.registers.find(function (r) { return r.key === key; });
+}
+
+function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
+
+function loadScriptOnce(src) {
+  return new Promise(function (resolve, reject) {
+    var existing = document.querySelector('script[data-src="' + src + '"]');
+    if (existing) {
+      if (existing.dataset.loaded === "1") return resolve();
+      existing.addEventListener("load", function () { resolve(); });
+      existing.addEventListener("error", function () { reject(new Error("load failed")); });
+      return;
+    }
+    var s = document.createElement("script");
+    s.src = src;
+    s.dataset.src = src;
+    s.onload = function () { s.dataset.loaded = "1"; resolve(); };
+    s.onerror = function () { reject(new Error("load failed")); };
+    document.head.appendChild(s);
+  });
+}
+
+async function ensureMammoth() {
+  if (window.mammoth) return true;
+  try {
+    await loadScriptOnce("https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js");
+    return !!window.mammoth;
+  } catch (e) {
+    return false;
+  }
+}
+
+/* ============================= SKILL LIST BUILDERS ============================= */
+// Returns { targetLabel, frameworkLabel, groups: [{title, items:[{id,name,category,desc,target,levelGuidance}]}] }
+function buildAssessmentSet() {
+  if (state.framework === "ppm") {
+    var stream = PPM_DATA.streams.find(function (s) { return s.key === state.ppmStream; });
+    var band = PPM_DATA.levelBands.find(function (b) { return b.level === state.ppmBand; });
+    if (!stream || !band) return null;
+
+    var coreItems = PPM_DATA.core.map(function (c) {
+      return {
+        id: c.id,
+        name: c.name,
+        category: "Core competency",
+        desc: "General portfolio-management competency required of everyone in this function.",
+        target: band.level,
+        levelGuidance: "L1: " + c.levels[0] + " | L2: " + c.levels[1] + " | L3: " + c.levels[2] + " | L4: " + c.levels[3],
+      };
+    });
+
+    var specificItems = stream.specific.map(function (name, i) {
+      var tmpl = PPM_DATA.specificGeneric;
+      function fill(s) { return s.split("{c}").join(name); }
+      return {
+        id: "sp" + stream.key + i,
+        name: name,
+        category: "Specific competency — " + stream.label,
+        desc: tmpl.def,
+        target: band.level,
+        levelGuidance: "L1: " + fill(tmpl.levels[0]) + " | L2: " + fill(tmpl.levels[1]) + " | L3: " + fill(tmpl.levels[2]) + " | L4: " + fill(tmpl.levels[3]),
+      };
+    });
+
+    return {
+      frameworkLabel: "Portfolio Management",
+      targetLabel: stream.label + " · " + band.title + " (" + band.band + ")",
+      frameworkKey: "ppm",
+      streamKey: stream.key,
+      band: band.level,
+      groups: [
+        { title: "Core competency", items: coreItems },
+        { title: "Specific competency — " + stream.label, items: specificItems },
+      ],
+    };
+  }
+
+  // FE registers
+  var reg = feRegister(state.framework);
+  if (!reg || !state.fePosition) return null;
+  var rows = reg.positions[state.fePosition];
+  if (!rows) return null;
+
+  var byCat = {};
+  var order = [];
+  rows.forEach(function (r) {
+    var cat = FE_CATALOG[r.id];
+    if (!cat) return;
+    var key = cat.category || "General";
+    if (!byCat[key]) { byCat[key] = []; order.push(key); }
+    byCat[key].push({
+      id: cat.id,
+      name: cat.name,
+      category: key,
+      desc: cat.desc || "(No further description in the register.)",
+      target: r.t,
+      levelGuidance: null,
+    });
+  });
+
+  var groups = order.map(function (k) { return { title: k, items: byCat[k] }; });
+
+  return {
+    frameworkLabel: reg.label,
+    targetLabel: state.fePosition,
+    frameworkKey: state.framework,
+    position: state.fePosition,
+    groups: groups,
+  };
+}
+
+function flattenItems(set) {
+  var out = [];
+  set.groups.forEach(function (g) { g.items.forEach(function (it) { out.push(it); }); });
+  return out;
+}
+
+/* ============================= OFFLINE KEYWORD SCAN ============================= */
+// Fully client-side assessment: no network or AI service is required.
+// It is intentionally presented as a rough keyword-based reading aid.
+const OFFLINE_STOPWORDS = new Set([
+  "and", "the", "for", "with", "from", "into", "onto", "of", "in", "on", "at", "to",
+  "a", "an", "or", "as", "is", "are", "by", "this", "that", "these", "those", "its",
+]);
+
+function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+
+function extractKeywordSet(item) {
+  var text = item.name + " " + (item.desc || "");
+  var nameWords = item.name.toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/)
+    .filter(function (w) { return w.length >= 4 && !OFFLINE_STOPWORDS.has(w); });
+  var seen = {};
+  var words = [];
+  nameWords.forEach(function (w) { if (!seen[w]) { seen[w] = 1; words.push(w); } });
+
+  var acroMatches = text.match(/\b[A-Z]{3,6}\b/g) || [];
+  var acroSeen = {};
+  var acronyms = [];
+  acroMatches.forEach(function (a) { if (!acroSeen[a]) { acroSeen[a] = 1; acronyms.push(a); } });
+
+  return { phrase: item.name.toLowerCase(), words: words, acronyms: acronyms };
+}
+
+function scoreItemOffline(item, cvLower, cvOriginal) {
+  var kw = extractKeywordSet(item);
+  var phraseHit = false;
+  if (kw.phrase.length > 3) {
+    try { phraseHit = new RegExp("\\b" + escapeRegex(kw.phrase) + "\\b", "i").test(cvOriginal); }
+    catch (e) { phraseHit = cvLower.indexOf(kw.phrase) !== -1; }
+  }
+
+  var matchedWords = kw.words.filter(function (w) {
+    return new RegExp("\\b" + escapeRegex(w) + "\\b", "i").test(cvOriginal);
+  });
+  var matchedAcronyms = kw.acronyms.filter(function (a) {
+    return new RegExp("\\b" + escapeRegex(a) + "\\b", "i").test(cvOriginal);
+  });
+
+  var score = (phraseHit ? 2 : 0) + Math.min(matchedWords.length, 4) + Math.min(matchedAcronyms.length, 3) * 1.5;
+  var maxScore = 2 + Math.min(kw.words.length, 4) + Math.min(kw.acronyms.length, 3) * 1.5;
+  var coverage = maxScore > 0 ? score / maxScore : 0;
+
+  var level;
+  if (coverage <= 0) level = 0;
+  else if (coverage < 0.34) level = 1;
+  else if (coverage < 0.6) level = 2;
+  else if (coverage < 0.85) level = 3;
+  else level = 4;
+
+  var matchedTerms = [];
+  if (phraseHit) matchedTerms.push('"' + item.name + '"');
+  matchedTerms = matchedTerms.concat(matchedWords).concat(matchedAcronyms);
+  var totalTerms = (kw.phrase.length > 3 ? 1 : 0) + kw.words.length + kw.acronyms.length;
+
+  return {
+    level: level,
+    evidence: matchedTerms.length ? "Matched: " + matchedTerms.slice(0, 6).join(", ") : "",
+    note: matchedTerms.length + " of " + totalTerms + " reference terms found by keyword scan.",
+  };
+}
+
+// Category/competency -> real standards, methodologies, and certifying bodies.
+// Used to make the offline development plan genuinely specific instead of generic filler.
+var CATEGORY_HINTS = {
+  "Civil Engineering": { std: "ASCE 7, ACI 318, and AISC 360", cert: "a chartered/PE review in structural civil design" },
+  "Cost Engineering": { std: "AACE International's cost estimate classification system and EVM guidelines", cert: "AACE's Certified Cost Professional (CCP) or Certified Estimating Professional (CEP)" },
+  "Electrical Power Engineering": { std: "IEEE 141/242 power system design practice and IEC 60079 hazardous-area classification", cert: "a NEBOSH hazardous-area or IEEE PE track" },
+  "Fixed Equipment Engineering": { std: "ASME Section VIII (pressure vessels) and API 510/570/653 in-service inspection codes", cert: "an API 510/570/653 inspector certification" },
+  "General Facilities Engineering": { std: "the company's Engineering Design Basis / Basis of Design practices", cert: "a facilities-engineering fundamentals course" },
+  "Instrumentation and Controls": { std: "IEC 61511 / ISA 84 (safety instrumented systems) and ISA 5.1 (P&ID symbology)", cert: "TÜV's Certified Functional Safety Expert (CFSE) or ISA's Certified Automation Professional (CAP)" },
+  "Marine Engineer": { std: "SOLAS and MARPOL conventions", cert: "an STCW marine engineering endorsement" },
+  "Naval Architect": { std: "classification-society rules (ABS/DNV/Lloyd's Register) and IMO intact/damage stability criteria", cert: "" },
+  "Offshore Structural Engineering": { std: "API RP 2A-WSD/LRFD and ISO 19902", cert: "" },
+  "Onshore Structural Engineering": { std: "AISC 360, ASCE 7, and the applicable local building code", cert: "" },
+  "Process Engineering": { std: "the API RP 14 series and the GPSA Engineering Data Book", cert: "formal process-simulation training (HYSYS/Aspen Plus)" },
+  "Project Management": { std: "PMI's PMBOK Guide or PRINCE2", cert: "PMP (Project Management Professional)" },
+  "Reliability & Integrity": { std: "API 580/581 risk-based inspection and ASME PCC-2/PCC-3", cert: "ASQ's Certified Reliability Engineer (CRE)" },
+  "Rotating Equipment Engineering": { std: "the API 610/611/612/617 machinery series", cert: "ISO 18436 vibration-analysis certification" },
+  "Subsea Engineering": { std: "the API 17 subsea systems series and ISO 13628", cert: "" },
+};
+
+var PPM_CORE_HINTS = {
+  "Financial and Economic Analysis": { std: "the CFA Institute curriculum or a corporate financial-modeling & valuation course (e.g. FMVA)", cert: "" },
+  "Portfolio Optimization": { std: "PMI's Portfolio Management Professional (PfMP) body of knowledge and real-options/portfolio theory coursework", cert: "PfMP" },
+  "Risk Management": { std: "ISO 31000 enterprise risk management and the COSO ERM framework", cert: "" },
+  "Strategic Planning": { std: "corporate-strategy methods (scenario planning, Porter's Five Forces) at MBA level", cert: "" },
+  "Performance Monitoring": { std: "Balanced Scorecard or OKR methodology", cert: "" },
+  "Regulatory and Policy": { std: "energy-sector regulatory affairs training relevant to the business stream (e.g. PSC/fiscal-term regulation for upstream)", cert: "" },
+  "Stakeholder Management": { std: "structured stakeholder-mapping and negotiation training", cert: "" },
+  "Corporate Action": { std: "M&A and corporate-finance coursework covering divestment and JV structuring", cert: "" },
+};
+
+function categoryHintFor(item) {
+  if (CATEGORY_HINTS[item.category]) return CATEGORY_HINTS[item.category];
+  if (PPM_CORE_HINTS[item.name]) return PPM_CORE_HINTS[item.name];
+  if (item.category && item.category.indexOf("Specific competency") === 0) {
+    var stream = item.category.split("—")[1];
+    return { std: "case studies and internal analytics specific to " + (stream ? stream.trim() : "this business stream"), cert: "" };
+  }
+  return null;
+}
+
+function domainLabelFor(item) {
+  if (item.category === "Core competency" || (item.category && item.category.indexOf("Specific competency") === 0)) return "portfolio management";
+  return item.category || "this area";
+}
+
+function offlineDevelopmentPlan(item, gap) {
+  if (gap <= 0) return null;
+  var hint = categoryHintFor(item);
+  var trainingBase = hint
+    ? "Study " + hint.std + (hint.cert ? ", and work toward " + hint.cert + "." : ".")
+    : "A short course or internal workshop specifically covering " + item.name + ".";
+  var exposure = gap >= 2
+    ? "Seek a project assignment that requires " + item.name + " end-to-end — not a supporting role — so the gap closes on real work, not theory."
+    : "Look for a live task or project that calls for " + item.name + " under normal, everyday conditions.";
+  var mentoring = gap >= 2
+    ? "Pair with a senior colleague or SME in " + domainLabelFor(item) + " for scheduled reviews (e.g. biweekly) until the work can be signed off independently."
+    : "Have a peer or supervisor already at the target level review the first one or two pieces of work in this area.";
+  var timeline = gap === 1 ? "3–6 months with regular practice" : gap === 2 ? "6–12 months" : "12+ months, likely spanning more than one assignment cycle";
+  var successCriteria = "Can complete a real " + item.name + " task without close supervision, to the standard the target level expects.";
+  return { training: trainingBase, exposure: exposure, mentoring: mentoring, timeline: timeline, success: successCriteria };
+}
+
+function runOfflineAssessment(set, cvText) {
+  var items = flattenItems(set);
+  var cvLower = cvText.toLowerCase();
+  var assessed = items.map(function (it) {
+    var s = scoreItemOffline(it, cvLower, cvText);
+    var gap = it.target - s.level;
+    return { item: it, level: s.level, evidence: s.evidence, note: s.note, plan: offlineDevelopmentPlan(it, gap) };
+  });
+  return {
+    set: set,
+    assessed: assessed,
+    mode: "offline",
+    overallSummary: "Estimated by an offline keyword scan (no AI) — a rough pass based on term matches, not a real reading of context or seniority. Treat this as a starting point, not a verdict.",
+    strengths: [],
+    priorities: [],
+  };
+}
+
+// Chevron Facilities Engineering Career Ladder (2017) — 9 Functional Levels / PSG 18-27.
+// Generic level language paraphrased from the source document's Dimension Factors section.
+var FE_LADDER = [
+  { fl: "1–2", psg: "18–19", title: "Facilities Engineer I–II", blurb: "Learning the discipline under close supervision; routine, well-defined tasks reviewed frequently." },
+  { fl: "3", psg: "20–21", title: "Facilities Engineer III", blurb: "Moderate-to-general supervision; handles larger or multiple conventional projects, proceeding on own initiative with work reviewed for soundness." },
+  { fl: "4–5", psg: "22–23", title: "Lead / Senior Facilities Engineer", blurb: "Works independently on complex, significant projects; well-developed project management skills; mentors others; work is largely self-directed." },
+  { fl: "6–9", psg: "24–27", title: "Advisor – Senior Consultant Facilities Engineer", blurb: "Recognized technical authority; shapes engineering standards and strategy; directs major work and is consulted across the business." },
+];
+// Index 0 = skill level 0 (no evidence) through index 4 = skill level 4 (mastery).
+var FE_LADDER_BY_SKILL_LEVEL = [
+  { fl: "—", psg: "< 18", title: "Below Facilities Engineer I", blurb: "Limited or no demonstrated competency yet." },
+  FE_LADDER[0],
+  FE_LADDER[1],
+  FE_LADDER[2],
+  FE_LADDER[3],
+];
+
+// Register "Common Position" -> closest discipline in the Career Ladder's Typical Assignments
+// (null = the ladder has no discipline-specific track for this role; generic levels only).
+var POSITION_LADDER_MATCH = {
+  "Onshore Civil/Structural Engineer": { discipline: "Civil Structural Engineer", exact: true },
+  "Offshore Structural Engineer": { discipline: "Civil Structural Engineer", exact: false, note: "the ladder folds offshore structural work into this same discipline" },
+  "Marine Engineer": { discipline: "Floating Systems Engineer", exact: false },
+  "Electrical Power Engineer": { discipline: "Electrical Power Engineer", exact: true },
+  "Electrical Engineer": { discipline: "Electrical Power Engineer", exact: false },
+  "I&C Engineer": { discipline: "Instrumentation and Control Engineer", exact: true },
+  "Mechanical Engineer - Fixed": { discipline: "Mechanical-Fixed Engineer", exact: true },
+  "Mechanical Engineer - Rotating": { discipline: "Mechanical-Rotating Engineer", exact: true },
+  "Process Engineer": { discipline: "Process Engineer", exact: true },
+  "Process Engineer - Geothermal": { discipline: "Process Engineer", exact: false },
+  "Process Design Engineer": { discipline: "Process Engineer", exact: false },
+  "Reliability & Integrity Engineer - Fixed": { discipline: "Reliability Engineer", exact: false },
+  "Reliability & Integrity Engineer - Rotating": { discipline: "Reliability Engineer", exact: false },
+  "General Facilities Engineer": { discipline: "Design and Construction Engineer", exact: false, note: "closest generalist track in the ladder for a broad-scope facilities role" },
+};
+
+function feLadderPlacement(avgLevel) {
+  var idx = clamp(Math.round(avgLevel), 0, 4);
+  return FE_LADDER_BY_SKILL_LEVEL[idx];
+}
+
+function ppmLadderPlacement(avgLevel, streamKey) {
+  var lvl = clamp(Math.round(avgLevel), 0, 4);
+  if (lvl <= 0) return { title: "Below Jr. Analyst", band: "< PRL 12", blurb: "Limited or no demonstrated competency yet." };
+  var band = PPM_DATA.levelBands.find(function (b) { return b.level === lvl; });
+  var title = band.title;
+  if (lvl === 4) {
+    var stream = PPM_DATA.streams.find(function (s) { return s.key === streamKey; });
+    if (stream && stream.manager) title = stream.manager + " (" + stream.label + ")";
+  }
+  return { title: title, band: band.band, blurb: "" };
+}
+
+/* ============================= RENDER: STEP 1 ============================= */
+function renderFrameworkList() {
+  var el = document.getElementById("fwList");
+  el.innerHTML = FRAMEWORKS.map(function (f) {
+    var selected = state.framework === f.key;
+    return (
+      '<button type="button" class="fw-row' + (selected ? " selected" : "") + '" role="radio" aria-checked="' + selected + '" data-key="' + f.key + '">' +
+      '<span class="fw-row-inner"><span class="chk"></span><span><span class="fw-name">' + esc(f.name) + '</span>' +
+      '<div class="fw-desc">' + esc(f.desc) + "</div></span></span>" +
+      '<span class="fw-meta">' + esc(f.meta) + "</span>" +
+      "</button>"
+    );
+  }).join("");
+
+  el.querySelectorAll(".fw-row").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var key = btn.dataset.key;
+      if (state.framework === key) return;
+      state.framework = key;
+      state.fePosition = null;
+      state.ppmStream = null;
+      state.ppmBand = null;
+      state.result = null;
+      renderFrameworkList();
+      renderStep2();
+      document.getElementById("step2").hidden = false;
+      document.getElementById("step3").hidden = true;
+      document.getElementById("results").hidden = true;
+    });
+  });
+}
+
+/* ============================= RENDER: STEP 2 ============================= */
+function renderStep2() {
+  var body = document.getElementById("step2Body");
+  if (state.framework === "ppm") {
+    body.innerHTML =
+      '<div class="field-row">' +
+      '<div class="field"><label class="field-label" for="streamSel">Business stream</label>' +
+      '<select id="streamSel"><option value="">Select a stream…</option>' +
+      PPM_DATA.streams.map(function (s) {
+        return '<option value="' + s.key + '"' + (state.ppmStream === s.key ? " selected" : "") + ">" + esc(s.label) + "</option>";
+      }).join("") +
+      "</select></div>" +
+      '<div class="field"><label class="field-label" for="bandSel">Target career level</label>' +
+      '<select id="bandSel"><option value="">Select a level…</option>' +
+      PPM_DATA.levelBands.map(function (b) {
+        return '<option value="' + b.level + '"' + (state.ppmBand === b.level ? " selected" : "") + ">" + esc(b.title) + " (" + esc(b.band) + ")</option>";
+      }).join("") +
+      "</select></div>" +
+      "</div>" +
+      '<p class="hint" id="ppmHint"></p>';
+
+    document.getElementById("streamSel").addEventListener("change", function (e) {
+      state.ppmStream = e.target.value || null;
+      onTargetChosen();
+    });
+    document.getElementById("bandSel").addEventListener("change", function (e) {
+      state.ppmBand = e.target.value ? Number(e.target.value) : null;
+      onTargetChosen();
+    });
+    updatePpmHint();
+  } else {
+    var reg = feRegister(state.framework);
+    var positions = Object.keys(reg.positions);
+    body.innerHTML =
+      '<div class="field"><label class="field-label" for="posSel">Role</label>' +
+      '<select id="posSel"><option value="">Select a role…</option>' +
+      positions.map(function (p) {
+        return '<option value="' + esc(p) + '"' + (state.fePosition === p ? " selected" : "") + ">" + esc(p) + "</option>";
+      }).join("") +
+      "</select>" +
+      '<p class="hint" id="feHint"></p></div>';
+
+    document.getElementById("posSel").addEventListener("change", function (e) {
+      state.fePosition = e.target.value || null;
+      onTargetChosen();
+    });
+    updateFeHint();
+  }
+}
+
+function updatePpmHint() {
+  var hint = document.getElementById("ppmHint");
+  if (!hint) return;
+  if (state.ppmStream && state.ppmBand) {
+    var set = buildAssessmentSet();
+    var n = flattenItems(set).length;
+    hint.textContent = n + " competencies will be assessed at a target level of " + state.ppmBand + " (" + LEVELS[state.ppmBand].label + ").";
+  } else {
+    hint.textContent = "Core competencies apply to every stream; the specific competencies change with the stream you pick. The target level scales with career band.";
+  }
+}
+
+function updateFeHint() {
+  var hint = document.getElementById("feHint");
+  if (!hint) return;
+  if (state.fePosition) {
+    var reg = feRegister(state.framework);
+    var n = reg.positions[state.fePosition].length;
+    hint.textContent = n + " critical skills carry a targeted level for this role in the register.";
+  } else {
+    hint.textContent = "";
+  }
+}
+
+function onTargetChosen() {
+  if (state.framework === "ppm") updatePpmHint(); else updateFeHint();
+  var ready = state.framework === "ppm" ? (state.ppmStream && state.ppmBand) : !!state.fePosition;
+  state.result = null;
+  document.getElementById("results").hidden = true;
+  document.getElementById("step3").hidden = !ready;
+  if (ready) {
+    var set = buildAssessmentSet();
+    document.getElementById("step3Sub").textContent =
+      "Assessing against " + set.targetLabel + " — " + flattenItems(set).length + " competencies.";
+  }
+}
+
+/* ============================= RENDER: STEP 3 ============================= */
+function initStep3() {
+  var cvTextEl = document.getElementById("cvText");
+  var runBtn = document.getElementById("runBtn");
+  var fileInput = document.getElementById("fileInput");
+  var fileStatus = document.getElementById("fileStatus");
+  var cvHint = document.getElementById("cvHint");
+
+  function onCvInput() {
+    state.cvText = cvTextEl.value;
+    var len = state.cvText.trim().length;
+    runBtn.disabled = len < 150 || state.running;
+    cvHint.textContent = len === 0 ? "Paste the CV text, or upload a file below." :
+      (len < 150 ? "A little short to assess reliably — add more detail if you can." : len + " characters ready.");
+  }
+  cvTextEl.addEventListener("input", onCvInput);
+  onCvInput();
+
+  fileInput.addEventListener("change", async function (e) {
+    var file = e.target.files && e.target.files[0];
+    if (!file) return;
+    var lower = file.name.toLowerCase();
+    fileStatus.textContent = "Reading " + file.name + "…";
+    if (lower.endsWith(".txt")) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        cvTextEl.value = String(reader.result || "");
+        onCvInput();
+        fileStatus.textContent = "Loaded " + file.name + ". Review below before running.";
+      };
+      reader.onerror = function () {
+        fileStatus.textContent = "Could not read that file — paste the text instead.";
+      };
+      reader.readAsText(file);
+    } else if (lower.endsWith(".docx")) {
+      var ok = await ensureMammoth();
+      if (!ok || !window.mammoth) {
+        fileStatus.textContent = "Could not load the document reader — paste the CV text instead.";
+        return;
+      }
+      try {
+        var buf = await file.arrayBuffer();
+        var result = await window.mammoth.extractRawText({ arrayBuffer: buf });
+        cvTextEl.value = (result && result.value) || "";
+        onCvInput();
+        fileStatus.textContent = "Loaded " + file.name + ". Review below before running.";
+      } catch (err) {
+        fileStatus.textContent = "Could not read that .docx — paste the text instead.";
+      }
+    } else {
+      fileStatus.textContent = "Unsupported file type — upload .txt or .docx, or paste the text.";
+    }
+  });
+
+  runBtn.addEventListener("click", runAssessment);
+}
+
+/* ============================= RUN ============================= */
+function setRunning(on, msg) {
+  state.running = on;
+  document.getElementById("runBtn").disabled = on || document.getElementById("cvText").value.trim().length < 150;
+  var status = document.getElementById("statusLine");
+  status.hidden = !on;
+  if (on) document.getElementById("statusText").textContent = msg || "Thinking…";
+}
+
+function showError(title, body, actionHtml) {
+  document.getElementById("errorBox").innerHTML =
+    '<div class="error-box"><strong>' + esc(title) + "</strong>" + esc(body) + (actionHtml || "") + "</div>";
+}
+function clearError() { document.getElementById("errorBox").innerHTML = ""; }
+
+function runAssessment() {
+  clearError();
+  var set = buildAssessmentSet();
+  if (!set) { showError("Missing selection", "Choose a role before running the assessment."); return; }
+  var cv = document.getElementById("cvText").value;
+  if (cv.trim().length < 150) { showError("CV too short", "Add more detail so there is something to assess."); return; }
+
+  setRunning(true, "Scanning your CV…");
+  window.setTimeout(function () {
+    try {
+      state.result = runOfflineAssessment(set, cv);
+      renderResults();
+      document.getElementById("results").hidden = false;
+      document.getElementById("results").scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (e) {
+      showError("Assessment unavailable", "Something went wrong while running the offline assessment. Please try again.");
+    } finally {
+      setRunning(false);
+    }
+  }, 80);
+}
+
+/* ============================= RENDER: RESULTS ============================= */
+function gapClass(gap) {
+  if (gap <= 0) return "gap-met";
+  if (gap === 1) return "gap-amber";
+  return "gap-rust";
+}
+function gapLabel(gap) {
+  if (gap < 0) return "+" + (-gap) + " above";
+  if (gap === 0) return "at target";
+  return "-" + gap + " gap";
+}
+function barColor(gap) {
+  if (gap <= 0) return "var(--green)";
+  if (gap === 1) return "var(--amber)";
+  return "var(--rust)";
+}
+
+function renderResults() {
+  var r = state.result;
+  var items = r.assessed;
+  var total = items.length;
+  var met = items.filter(function (a) { return a.level >= a.item.target; }).length;
+  var readiness = Math.round(
+    100 * items.reduce(function (sum, a) { return sum + Math.min(a.level / a.item.target, 1); }, 0) / total
+  );
+  var widest = items.slice().sort(function (a, b) { return (b.item.target - b.level) - (a.item.target - a.level); })[0];
+  var widestGap = widest ? widest.item.target - widest.level : 0;
+
+  var avgTarget = items.reduce(function (s, a) { return s + a.item.target; }, 0) / total;
+  var avgAssessed = items.reduce(function (s, a) { return s + a.level; }, 0) / total;
+  var ladderHtml = "";
+  if (r.set.frameworkKey === "ppm") {
+    var rolePlacement = ppmLadderPlacement(avgTarget, r.set.streamKey);
+    var cvPlacement = ppmLadderPlacement(avgAssessed, r.set.streamKey);
+    ladderHtml =
+      '<div class="cat-block"><div class="cat-title">Career ladder placement</div>' +
+      '<div class="ladder-grid">' +
+      '<div class="ladder-card"><div class="ladder-lab">This role typically sits at</div><div class="ladder-title">' + esc(rolePlacement.title) + '</div><div class="ladder-sub">' + esc(rolePlacement.band) + "</div></div>" +
+      '<div class="ladder-card highlight"><div class="ladder-lab">This CV\'s demonstrated profile sits at</div><div class="ladder-title">' + esc(cvPlacement.title) + '</div><div class="ladder-sub">' + esc(cvPlacement.band) + "</div></div>" +
+      "</div>" +
+      '<p class="hint">Titles and PRL bands come directly from the PIVOT competency booklet. At the Manager/Sr. Expert band, the title shown is the specific Manager Portfolio Management role that owns this stream.</p>' +
+      "</div>";
+  } else if (r.set.frameworkKey) {
+    var rolePlacementFE = feLadderPlacement(avgTarget);
+    var cvPlacementFE = feLadderPlacement(avgAssessed);
+    var match = POSITION_LADDER_MATCH[r.set.position];
+    var matchNote;
+    if (!match) {
+      matchNote = "The source Career Ladder doesn't publish a discipline-specific track for this role — placement uses its general, cross-discipline level definitions.";
+    } else if (match.exact) {
+      matchNote = "Matched to the ladder's \"" + match.discipline + "\" discipline.";
+    } else {
+      matchNote = "No exact match in the ladder — placed against its closest discipline, \"" + match.discipline + "\"" + (match.note ? " (" + match.note + ")" : "") + ".";
+    }
+    ladderHtml =
+      '<div class="cat-block"><div class="cat-title">Career ladder placement</div>' +
+      '<div class="ladder-grid">' +
+      '<div class="ladder-card"><div class="ladder-lab">This role typically sits at</div><div class="ladder-title">' + esc(rolePlacementFE.title) + '</div><div class="ladder-sub">FL ' + esc(rolePlacementFE.fl) + " · PSG " + esc(rolePlacementFE.psg) + "</div></div>" +
+      '<div class="ladder-card highlight"><div class="ladder-lab">This CV\'s demonstrated profile sits at</div><div class="ladder-title">' + esc(cvPlacementFE.title) + '</div><div class="ladder-sub">FL ' + esc(cvPlacementFE.fl) + " · PSG " + esc(cvPlacementFE.psg) + "</div></div>" +
+      "</div>" +
+      '<p class="hint">Source: the 2017 Facilities Engineer Career Ladder (9 Functional Levels, PSG 18–27). ' + esc(matchNote) + ' The 0–4 Skills Register scale isn\'t officially cross-walked to Functional Levels in the source documents — this mapping is inferred from matching supervision/autonomy language between the two, not an official published crosswalk.</p>' +
+      "</div>";
+  }
+
+  var strengths = r.strengths.length ? r.strengths : items.filter(function (a) { return a.level >= a.item.target; })
+    .sort(function (a, b) { return b.level - a.level; }).slice(0, 4).map(function (a) { return a.item.name; });
+  var priorities = r.priorities.length ? r.priorities : items.slice()
+    .sort(function (a, b) { return (b.item.target - b.level) - (a.item.target - a.level); })
+    .filter(function (a) { return a.item.target - a.level > 0; })
+    .slice(0, 4).map(function (a) { return a.item.name; });
+
+  var groupsHtml = r.set.groups.map(function (g) {
+    var rowsHtml = g.items.map(function (it) {
+      var a = items.find(function (x) { return x.item.id === it.id; });
+      var gap = it.target - a.level;
+      var pct = (a.level / 4) * 100;
+      var targetPct = (it.target / 4) * 100;
+      return (
+        "<tr>" +
+        '<td><div class="skill-name">' + esc(it.name) + "</div>" +
+        (a.note ? '<div class="skill-evidence">' + esc(a.note) + "</div>" : "") +
+        (a.evidence ? '<div class="skill-evidence">“' + esc(a.evidence) + '”</div>' : "") +
+        "</td>" +
+        '<td class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:' + pct + "%; background:" + barColor(gap) + ';"></div><div class="bar-target" style="left:' + targetPct + '%;"></div></div>' +
+        '<div class="bar-nums"><span>CV: level ' + a.level + "</span><span>Target: " + it.target + "</span></div></td>" +
+        '<td><span class="gap-tag ' + gapClass(gap) + '">' + esc(gapLabel(gap)) + "</span></td>" +
+        "</tr>"
+      );
+    }).join("");
+    return (
+      '<div class="cat-block"><div class="cat-title">' + esc(g.title) + '</div>' +
+      '<div class="table-wrap"><table class="skills"><thead><tr><th>Competency</th><th>CV level vs. target</th><th>Gap</th></tr></thead><tbody>' +
+      rowsHtml + "</tbody></table></div></div>"
+    );
+  }).join("");
+
+  var gappedSorted = items.slice()
+    .filter(function (a) { return a.item.target - a.level > 0; })
+    .sort(function (a, b) { return (b.item.target - b.level) - (a.item.target - a.level); });
+
+  var planHtml = '<div class="cat-block"><div class="cat-title">Development plan</div>';
+  if (!gappedSorted.length) {
+    planHtml += '<p class="hint" style="margin:8px 0 20px;">No gaps against the target level — nothing to plan for here.</p>';
+  } else {
+    planHtml += gappedSorted.map(function (a) {
+      var gap = a.item.target - a.level;
+      var p = a.plan || {};
+      return (
+        '<div class="plan-card">' +
+        '<div class="plan-head"><span class="skill-name">' + esc(a.item.name) + '</span><span class="gap-tag ' + gapClass(gap) + '">' + esc(gapLabel(gap)) + "</span></div>" +
+        '<dl class="plan-grid">' +
+        '<div><dt>Training / standards</dt><dd>' + esc(p.training || "—") + "</dd></div>" +
+        '<div><dt>Project exposure</dt><dd>' + esc(p.exposure || "—") + "</dd></div>" +
+        '<div><dt>Mentoring</dt><dd>' + esc(p.mentoring || "—") + "</dd></div>" +
+        '<div><dt>Suggested timeline</dt><dd>' + esc(p.timeline || "—") + "</dd></div>" +
+        '<div><dt>Signal it\'s closed</dt><dd>' + esc(p.success || "—") + "</dd></div>" +
+        "</dl></div>"
+      );
+    }).join("");
+  }
+  planHtml += "</div>";
+
+  var html =
+    '<div class="results-head"><div><h2>Assessment <span class="mode-tag offline">Offline keyword scan</span></h2><div class="sub">' + esc(r.set.targetLabel) + " · " + esc(r.set.frameworkLabel) + "</div></div></div>" +
+    '<div class="summary-strip">' +
+    '<div class="summary-cell"><div class="num">' + readiness + '%</div><div class="lab">Overall readiness against target levels</div></div>' +
+    '<div class="summary-cell"><div class="num">' + met + " / " + total + '</div><div class="lab">Competencies at or above target</div></div>' +
+    '<div class="summary-cell"><div class="num">' + (widestGap > 0 ? widestGap : 0) + '</div><div class="lab">' + (widestGap > 0 ? "Widest gap — " + esc(widest.item.name) : "No gaps found") + "</div></div>" +
+    "</div>" +
+    ladderHtml +
+    (r.overallSummary ? '<p class="narrative">' + esc(r.overallSummary) + "</p>" : "") +
+    '<div class="two-col">' +
+    '<div class="col strengths"><h3>Strengths</h3><ul>' + (strengths.length ? strengths.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") : '<li style="padding-left:0;">Nothing clearly stands out yet — see the table below.</li>') + "</ul></div>" +
+    '<div class="col priorities"><h3>Development priorities</h3><ul>' + (priorities.length ? priorities.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("") : '<li style="padding-left:0;">No material gaps against the target level.</li>') + "</ul></div>" +
+    "</div>" +
+    planHtml +
+    groupsHtml +
+    '<div class="premium-cta">' +
+    '<strong>Want a deeper assessment?</strong>' +
+    '<p>This free tool uses an offline keyword scan. For a more detailed AI-powered Claude assessment — including contextual CV reading, evidence interpretation, competency-by-competency analysis, and a more tailored development plan — please contact me about the paid assessment.</p>' +
+    '</div>' +
+    '<div class="results-actions"><button class="btn" id="downloadBtn">Download PDF</button><button class="btn secondary" id="rerunBtn">Assess another CV</button></div>';
+
+  var resEl = document.getElementById("results");
+  resEl.innerHTML = html;
+  document.getElementById("downloadBtn").addEventListener("click", downloadReport);
+  document.getElementById("rerunBtn").addEventListener("click", function () {
+    document.getElementById("results").hidden = true;
+    document.getElementById("cvText").value = "";
+    document.getElementById("cvText").dispatchEvent(new Event("input"));
+    document.getElementById("fileStatus").textContent = "";
+    state.result = null;
+    window.scrollTo({ top: document.getElementById("step3").offsetTop - 20, behavior: "smooth" });
+  });
+}
+
+/* ============================= DOWNLOAD ============================= */
+function buildReportMarkdown() {
+  var r = state.result;
+  var items = r.assessed;
+  var total = items.length;
+  var met = items.filter(function (a) { return a.level >= a.item.target; }).length;
+  var readiness = Math.round(100 * items.reduce(function (sum, a) { return sum + Math.min(a.level / a.item.target, 1); }, 0) / total);
+
+  var lines = [];
+  lines.push("# CV competency assessment");
+  lines.push("");
+  lines.push("**Role:** " + r.set.targetLabel);
+  lines.push("**Register:** " + r.set.frameworkLabel);
+  lines.push("**Reading method:** " + "Offline keyword scan (no AI — rough estimate only)");
+  lines.push("**Overall readiness:** " + readiness + "% · " + met + "/" + total + " competencies at or above target");
+  lines.push("");
+
+  var avgTargetMd = items.reduce(function (s, a) { return s + a.item.target; }, 0) / total;
+  var avgAssessedMd = items.reduce(function (s, a) { return s + a.level; }, 0) / total;
+  lines.push("## Career ladder placement");
+  lines.push("");
+  if (r.set.frameworkKey === "ppm") {
+    var rp = ppmLadderPlacement(avgTargetMd, r.set.streamKey);
+    var cp = ppmLadderPlacement(avgAssessedMd, r.set.streamKey);
+    lines.push("- **This role typically sits at:** " + rp.title + " (" + rp.band + ")");
+    lines.push("- **This CV's demonstrated profile sits at:** " + cp.title + " (" + cp.band + ")");
+    lines.push("");
+    lines.push("_Titles and PRL bands come directly from the PIVOT competency booklet._");
+  } else {
+    var rpf = feLadderPlacement(avgTargetMd);
+    var cpf = feLadderPlacement(avgAssessedMd);
+    var matchMd = POSITION_LADDER_MATCH[r.set.position];
+    var matchNoteMd = !matchMd
+      ? "The source Career Ladder doesn't publish a discipline-specific track for this role — placement uses its general, cross-discipline level definitions."
+      : matchMd.exact
+      ? "Matched to the ladder's \"" + matchMd.discipline + "\" discipline."
+      : "No exact match in the ladder — placed against its closest discipline, \"" + matchMd.discipline + "\".";
+    lines.push("- **This role typically sits at:** " + rpf.title + " (FL " + rpf.fl + ", PSG " + rpf.psg + ")");
+    lines.push("- **This CV's demonstrated profile sits at:** " + cpf.title + " (FL " + cpf.fl + ", PSG " + cpf.psg + ")");
+    lines.push("");
+    lines.push("_Source: the 2017 Facilities Engineer Career Ladder. " + matchNoteMd + " The 0-4 Skills Register scale isn't officially cross-walked to Functional Levels in the source documents — this mapping is inferred from matching supervision/autonomy language between the two, not an official published crosswalk._");
+  }
+  lines.push("");
+
+  if (r.overallSummary) { lines.push(r.overallSummary); lines.push(""); }
+
+  if (r.strengths.length) {
+    lines.push("## Strengths");
+    r.strengths.forEach(function (s) { lines.push("- " + s); });
+    lines.push("");
+  }
+  if (r.priorities.length) {
+    lines.push("## Development priorities");
+    r.priorities.forEach(function (s) { lines.push("- " + s); });
+    lines.push("");
+  }
+
+  var gappedSorted = items.slice()
+    .filter(function (a) { return a.item.target - a.level > 0; })
+    .sort(function (a, b) { return (b.item.target - b.level) - (a.item.target - a.level); });
+  lines.push("## Development plan");
+  lines.push("");
+  if (!gappedSorted.length) {
+    lines.push("No gaps against the target level — nothing to plan for here.");
+  } else {
+    gappedSorted.forEach(function (a) {
+      var gap = a.item.target - a.level;
+      var p = a.plan || {};
+      lines.push("### " + a.item.name + " — " + gapLabel(gap));
+      lines.push("- **Training / standards:** " + (p.training || "—"));
+      lines.push("- **Project exposure:** " + (p.exposure || "—"));
+      lines.push("- **Mentoring:** " + (p.mentoring || "—"));
+      lines.push("- **Suggested timeline:** " + (p.timeline || "—"));
+      lines.push("- **Signal it's closed:** " + (p.success || "—"));
+      lines.push("");
+    });
+  }
+
+  r.set.groups.forEach(function (g) {
+    lines.push("## " + g.title);
+    lines.push("");
+    lines.push("| Competency | Target | CV level | Gap | Evidence |");
+    lines.push("|---|---|---|---|---|");
+    g.items.forEach(function (it) {
+      var a = items.find(function (x) { return x.item.id === it.id; });
+      var gap = it.target - a.level;
+      var evidence = (a.evidence || a.note || "").replace(/\|/g, "/").replace(/\n/g, " ");
+      lines.push("| " + it.name + " | " + it.target + " | " + a.level + " | " + gapLabel(gap) + " | " + evidence + " |");
+    });
+    lines.push("");
+  });
+
+  lines.push("---");
+  lines.push("Generated by Skills Register Match. Reading aid, not a certification — verify against the source register.");
+  return lines.join("\n");
+}
+
+function getJsPdfCtor() {
+  if (window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
+  if (window.jsPDF) return window.jsPDF;
+  return null;
+}
+
+async function ensureJsPDF() {
+  if (getJsPdfCtor()) return true;
+  try {
+    await loadScriptOnce("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
+    return !!getJsPdfCtor();
+  } catch (e) {
+    return false;
+  }
+}
+
+// Hand-drawn PDF (no table plugin, to avoid version-mismatch risk) — returns a Blob.
+function buildPdfBlob() {
+  var r = state.result;
+  var Ctor = getJsPdfCtor();
+  var doc = new Ctor({ unit: "mm", format: "a4" });
+
+  var pageW = doc.internal.pageSize.getWidth();
+  var pageH = doc.internal.pageSize.getHeight();
+  var marginL = 18, marginR = 18, marginTop = 20, marginBottom = 18;
+  var contentW = pageW - marginL - marginR;
+  var y = marginTop;
+
+  var INK = [22, 33, 29], SOFT = [70, 80, 75], MUTED = [130, 138, 132];
+  var GREEN = [59, 107, 68], AMBER = [161, 92, 14], RUST = [143, 59, 46];
+
+  function ensureSpace(h) {
+    if (y + h > pageH - marginBottom) { doc.addPage(); y = marginTop; }
+  }
+  function setColor(c) { doc.setTextColor(c[0], c[1], c[2]); }
+  function heading(text, size, gapAfter) {
+    ensureSpace(size * 0.5 + 6);
+    doc.setFont("helvetica", "bold"); doc.setFontSize(size); setColor(INK);
+    doc.text(text, marginL, y);
+    y += gapAfter == null ? size * 0.5 + 3 : gapAfter;
+  }
+  function paragraph(text, size, color, lineH) {
+    doc.setFont("helvetica", "normal"); doc.setFontSize(size || 10); setColor(color || SOFT);
+    var lines = doc.splitTextToSize(text, contentW);
+    lines.forEach(function (line) {
+      ensureSpace(lineH || 5);
+      doc.text(line, marginL, y);
+      y += lineH || 5;
+    });
+  }
+  function rule(color) {
+    doc.setDrawColor((color || [220, 220, 216])[0], (color || [220, 220, 216])[1], (color || [220, 220, 216])[2]);
+    doc.setLineWidth(0.2);
+    doc.line(marginL, y, marginL + contentW, y);
+  }
+
+  var items = r.assessed;
+  var total = items.length;
+  var met = items.filter(function (a) { return a.level >= a.item.target; }).length;
+  var readiness = Math.round(100 * items.reduce(function (sum, a) { return sum + Math.min(a.level / a.item.target, 1); }, 0) / total);
+
+  // Title
+  heading("CV Competency Assessment", 18, 8);
+  doc.setFont("helvetica", "normal"); doc.setFontSize(11); setColor(SOFT);
+  doc.text(r.set.targetLabel, marginL, y); y += 6;
+  doc.setFontSize(9); setColor(MUTED);
+  var today = new Date();
+  var dateStr = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
+  doc.text(r.set.frameworkLabel + "   ·   Generated " + dateStr, marginL, y);
+  y += 5;
+  doc.setFontSize(9);
+  setColor(r.mode === "offline" ? AMBER : SOFT);
+  doc.text("Offline keyword scan — no AI, rough estimate only", marginL, y);
+  y += 10;
+
+  // Summary stats row
+  var boxW = (contentW - 8) / 3, boxH = 20;
+  ensureSpace(boxH + 6);
+  var stats = [
+    { num: readiness + "%", lab: "Overall readiness" },
+    { num: met + " / " + total, lab: "At or above target" },
+    { num: String(Math.max(0, total ? Math.max.apply(null, items.map(function (a) { return a.item.target - a.level; })) : 0)), lab: "Widest single gap" },
+  ];
+  stats.forEach(function (s, i) {
+    var bx = marginL + i * (boxW + 4);
+    doc.setDrawColor(220, 220, 216); doc.setLineWidth(0.2);
+    doc.rect(bx, y, boxW, boxH);
+    doc.setFont("helvetica", "bold"); doc.setFontSize(16); setColor(INK);
+    doc.text(s.num, bx + 4, y + 10);
+    doc.setFont("helvetica", "normal"); doc.setFontSize(8); setColor(MUTED);
+    doc.text(doc.splitTextToSize(s.lab, boxW - 8), bx + 4, y + 15.5);
+  });
+  y += boxH + 10;
+
+  (function ladderSection() {
+    var avgTargetPdf = items.reduce(function (s, a) { return s + a.item.target; }, 0) / total;
+    var avgAssessedPdf = items.reduce(function (s, a) { return s + a.level; }, 0) / total;
+    heading("Career ladder placement", 12, 6);
+
+    var rows, noteText;
+    if (r.set.frameworkKey === "ppm") {
+      var rp = ppmLadderPlacement(avgTargetPdf, r.set.streamKey);
+      var cp = ppmLadderPlacement(avgAssessedPdf, r.set.streamKey);
+      rows = [
+        { lab: "This role typically sits at", title: rp.title, sub: rp.band },
+        { lab: "This CV's demonstrated profile sits at", title: cp.title, sub: cp.band },
+      ];
+      noteText = "Titles and PRL bands come directly from the PIVOT competency booklet.";
+    } else {
+      var rpf = feLadderPlacement(avgTargetPdf);
+      var cpf = feLadderPlacement(avgAssessedPdf);
+      var matchPdf = POSITION_LADDER_MATCH[r.set.position];
+      var matchNotePdf = !matchPdf
+        ? "The source Career Ladder doesn't publish a discipline-specific track for this role — placement uses its general, cross-discipline level definitions."
+        : matchPdf.exact
+        ? "Matched to the ladder's \"" + matchPdf.discipline + "\" discipline."
+        : "No exact match in the ladder — placed against its closest discipline, \"" + matchPdf.discipline + "\".";
+      rows = [
+        { lab: "This role typically sits at", title: rpf.title, sub: "FL " + rpf.fl + " · PSG " + rpf.psg },
+        { lab: "This CV's demonstrated profile sits at", title: cpf.title, sub: "FL " + cpf.fl + " · PSG " + cpf.psg },
+      ];
+      noteText = "Source: the 2017 Facilities Engineer Career Ladder. " + matchNotePdf + " The 0-4 Skills Register scale isn't officially cross-walked to Functional Levels in the source documents — this mapping is inferred from matching supervision/autonomy language between the two, not an official published crosswalk.";
+    }
+
+    var boxW2 = (contentW - 6) / 2;
+    doc.setFont("helvetica", "bold"); doc.setFontSize(10);
+    rows.forEach(function (rr) { rr._lines = doc.splitTextToSize(rr.title, boxW2 - 8); });
+    var maxLines = Math.max(rows[0]._lines.length, rows[1]._lines.length);
+    var boxH2 = 14 + maxLines * 4.4 + 8;
+    ensureSpace(boxH2 + 10);
+
+    var yTop = y;
+    rows.forEach(function (rr, i) {
+      var bx = marginL + i * (boxW2 + 6);
+      doc.setDrawColor(215, 217, 210); doc.setLineWidth(0.3);
+      doc.rect(bx, yTop, boxW2, boxH2);
+      doc.setFont("helvetica", "normal"); doc.setFontSize(7.5); setColor(MUTED);
+      doc.text(rr.lab, bx + 4, yTop + 6);
+      doc.setFont("helvetica", "bold"); doc.setFontSize(10); setColor(INK);
+      var ty = yTop + 12;
+      rr._lines.forEach(function (l) { doc.text(l, bx + 4, ty); ty += 4.4; });
+      doc.setFont("helvetica", "normal"); doc.setFontSize(8); setColor(MUTED);
+      doc.text(rr.sub, bx + 4, yTop + boxH2 - 4);
+    });
+    y = yTop + boxH2 + 6;
+    paragraph(noteText, 7.5, MUTED, 3.8);
+    y += 4;
+  })();
+
+  if (r.overallSummary) { paragraph(r.overallSummary, 10.5, SOFT, 5.2); y += 4; }
+
+  function listBlock(title, list, color) {
+    if (!list.length) return;
+    heading(title, 11, 6);
+    doc.setFont("helvetica", "normal"); doc.setFontSize(9.5);
+    list.forEach(function (s) {
+      var lines = doc.splitTextToSize("• " + s, contentW);
+      lines.forEach(function (line, idx) {
+        ensureSpace(5);
+        setColor(idx === 0 ? INK : SOFT);
+        doc.text(line, marginL, y);
+        y += 5;
+      });
+    });
+    y += 3;
+  }
+  listBlock("Strengths", r.strengths, GREEN);
+  listBlock("Development priorities", r.priorities, AMBER);
+
+  // Development plan: one row per skill with a gap, name | gap | suggested action
+  (function developmentPlanSection() {
+    var gappedSorted = items.slice()
+      .filter(function (a) { return a.item.target - a.level > 0; })
+      .sort(function (a, b) { return (b.item.target - b.level) - (a.item.target - a.level); });
+    heading("Development plan", 12, 6);
+    if (!gappedSorted.length) {
+      paragraph("No gaps against the target level — nothing to plan for here.", 9.5, MUTED, 5);
+      y += 4;
+      return;
+    }
+    var labelW = 34;
+    var valueX = marginL + labelW;
+    var valueW = contentW - labelW;
+    var fields = [
+      ["Training / standards", "training"],
+      ["Project exposure", "exposure"],
+      ["Mentoring", "mentoring"],
+      ["Suggested timeline", "timeline"],
+      ["Signal it's closed", "success"],
+    ];
+    gappedSorted.forEach(function (a, idx) {
+      var gap = a.item.target - a.level;
+      var p = a.plan || {};
+      ensureSpace(14);
+      doc.setFont("helvetica", "bold"); doc.setFontSize(10.5); setColor(INK);
+      var nameLines = doc.splitTextToSize(a.item.name, contentW - 26);
+      nameLines.forEach(function (l, i) {
+        if (i > 0) ensureSpace(5);
+        doc.text(l, marginL, y);
+        if (i === 0) { doc.setFont("helvetica", "bold"); doc.setFontSize(9); setColor(gap === 1 ? AMBER : RUST); doc.text(gapLabel(gap), marginL + contentW - 22, y); }
+        y += 5;
+      });
+      y += 1;
+      fields.forEach(function (f) {
+        var val = (p[f[1]] || "—").toString();
+        var lines = doc.splitTextToSize(val, valueW);
+        var rowH = Math.max(lines.length, 1) * 4.4;
+        ensureSpace(rowH + 1);
+        doc.setFont("helvetica", "bold"); doc.setFontSize(7.5); setColor(MUTED);
+        doc.text(f[0].toUpperCase(), marginL, y);
+        doc.setFont("helvetica", "normal"); doc.setFontSize(8.7); setColor(SOFT);
+        var yy = y;
+        lines.forEach(function (l) { doc.text(l, valueX, yy); yy += 4.4; });
+        y = yy + 0.5;
+      });
+      y += 2;
+      if (idx < gappedSorted.length - 1) { rule([225, 227, 220]); y += 5; }
+    });
+    y += 4;
+  })();
+
+  // Column layout for skill rows
+  var colTarget = marginL + contentW - 46;
+  var colLevel = marginL + contentW - 30;
+  var colGap = marginL + contentW - 14;
+  var nameW = colTarget - marginL - 4;
+
+  function tableHeader() {
+    ensureSpace(10);
+    doc.setFont("helvetica", "bold"); doc.setFontSize(8); setColor(MUTED);
+    doc.text("COMPETENCY", marginL, y);
+    doc.text("TARGET", colTarget, y);
+    doc.text("CV LVL", colLevel, y);
+    doc.text("GAP", colGap, y);
+    y += 3;
+    rule([180, 186, 180]);
+    y += 5;
+  }
+
+  r.set.groups.forEach(function (g) {
+    heading(g.title, 12, 6);
+    tableHeader();
+    g.items.forEach(function (it) {
+      var a = items.find(function (x) { return x.item.id === it.id; });
+      var gap = it.target - a.level;
+      var nameLines = doc.splitTextToSize(it.name, nameW);
+      var noteText = a.evidence || a.note || "";
+      var noteLines = noteText ? doc.splitTextToSize(noteText, nameW) : [];
+      var rowH = (nameLines.length + Math.min(noteLines.length, 2)) * 4.6 + 4;
+      ensureSpace(rowH);
+      var rowTop = y;
+      doc.setFont("helvetica", "bold"); doc.setFontSize(9.5); setColor(INK);
+      nameLines.forEach(function (line) { doc.text(line, marginL, y); y += 4.6; });
+      if (noteLines.length) {
+        doc.setFont("helvetica", "normal"); doc.setFontSize(8); setColor(MUTED);
+        noteLines.slice(0, 2).forEach(function (line) { doc.text(line, marginL, y); y += 4.6; });
+      }
+      doc.setFont("helvetica", "normal"); doc.setFontSize(9); setColor(SOFT);
+      doc.text(String(it.target), colTarget, rowTop);
+      doc.text(String(a.level), colLevel, rowTop);
+      var gapColor = gap <= 0 ? GREEN : (gap === 1 ? AMBER : RUST);
+      doc.setFont("helvetica", "bold"); setColor(gapColor);
+      doc.text(gapLabel(gap), colGap, rowTop);
+      y += 2;
+      rule([232, 234, 228]);
+      y += 4;
+    });
+    y += 2;
+  });
+
+  // Footer disclaimer on every page
+  var pageCount = doc.internal.getNumberOfPages();
+  for (var p = 1; p <= pageCount; p++) {
+    doc.setPage(p);
+    doc.setFont("helvetica", "normal"); doc.setFontSize(7.5); setColor(MUTED);
+    doc.text(
+      "Skills Register Match — offline keyword scan, not an AI reading or a certification. Verify against the source register.",
+      marginL, pageH - 10
+    );
+    doc.text(String(p) + " / " + pageCount, pageW - marginR, pageH - 10, { align: "right" });
+  }
+
+  return doc.output("blob");
+}
+
+async function downloadReport() {
+  var safeRole = (state.result.set.targetLabel || "role").replace(/[^a-z0-9]+/gi, "_").slice(0, 40);
+
+  var pdfReady = await ensureJsPDF();
+  var blob = null, ext = "pdf";
+  if (pdfReady) {
+    try { blob = buildPdfBlob(); } catch (e) { blob = null; }
+  }
+  if (!blob) { ext = "md"; }
+  var data = blob || buildReportMarkdown();
+  var filename = "CV_Assessment_" + safeRole + "." + ext;
+
+  if (blob) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    return;
+  }
+
+  try {
+    var mdBlob = new Blob([data], { type: "text/markdown;charset=utf-8" });
+    var mdUrl = URL.createObjectURL(mdBlob);
+    var mdA = document.createElement("a");
+    mdA.href = mdUrl;
+    mdA.download = filename;
+    document.body.appendChild(mdA);
+    mdA.click();
+    mdA.remove();
+    window.setTimeout(function () { URL.revokeObjectURL(mdUrl); }, 1000);
+    showError("PDF renderer unavailable", "The assessment was saved as a Markdown report instead.");
+  } catch (e) {
+    try {
+      await navigator.clipboard.writeText(data);
+      showError("Download unavailable", "Copied the report to your clipboard instead — paste it into a document.");
+    } catch (e2) {
+      showError("Download unavailable", "Couldn't save or copy the report in this view.");
+    }
+  }
+}
+
+/* ============================= INIT ============================= */
+renderFrameworkList();
+initStep3();
+</script>
+
+
+</body>
+</html>
